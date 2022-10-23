@@ -1,0 +1,3839 @@
+Driver 8ballact (Eight Ball Action (DK conversion)):
+   <root>                         Eight Ball Action (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver 8ballact2 (Eight Ball Action (DKJr conversion)):
+   <root>                         Eight Ball Action (DKJr conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver a1200xl (Atari 1200XL):
+   <root>                         Atari 1200XL
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a130xe (Atari 130XE):
+   <root>                         Atari 130XE
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a400 (Atari 400 (NTSC)):
+   <root>                         Atari 400 (NTSC)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a400pal (Atari 400 (PAL)):
+   <root>                         Atari 400 (PAL)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a5200 (Atari 5200):
+   <root>                         Atari 5200
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 5200 Cartridge Slot
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+
+Driver a600xl (Atari 600XL):
+   <root>                         Atari 600XL
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a65xe (Atari 65XE):
+   <root>                         Atari 65XE
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a65xea (Atari 65XE (Arabic)):
+   <root>                         Atari 65XE (Arabic)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a800 (Atari 800 (NTSC)):
+   <root>                         Atari 800 (NTSC)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cartright                    Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a800pal (Atari 800 (PAL)):
+   <root>                         Atari 800 (PAL)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cartright                    Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a800xe (Atari 800XE):
+   <root>                         Atari 800XE
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a800xl (Atari 800XL (NTSC)):
+   <root>                         Atari 800XL (NTSC)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver a800xlp (Atari 800XL (PAL)):
+   <root>                         Atari 800XL (PAL)
+     antic                        Atari ANTIC
+     cart_list                    Software List
+     cartleft                     Atari 8bit Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.77 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.77 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List
+
+Driver alice (Alice):
+   <root>                         Alice
+     cass_list                    Software List
+     cassette                     Cassette
+     dac                          1-Bit DAC
+     ext                          MC-10 Cartridge Slot
+     maincpu                      Motorola MC6803 @ 3.57 MHz
+     mc6847                       Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     screen                       Video Screen @ 7.15 MHz
+     speaker                      Speaker
+
+Driver alice32 (Alice 32):
+   <root>                         Alice 32
+     alice32_sl                   Timer
+     cass_list                    Software List
+     cassette                     Cassette
+     dac                          1-Bit DAC
+     ef9345                       EF9345
+     ext                          MC-10 Cartridge Slot
+     maincpu                      Motorola MC6803 @ 3.57 MHz
+     mc10_cass                    Software List
+     palette                      palette
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     screen                       Video Screen
+     speaker                      Speaker
+
+Driver alice90 (Alice 90):
+   <root>                         Alice 90
+     alice32_cass                 Software List
+     alice32_sl                   Timer
+     cass_list                    Software List
+     cassette                     Cassette
+     dac                          1-Bit DAC
+     ef9345                       EF9345
+     ext                          MC-10 Cartridge Slot
+     maincpu                      Motorola MC6803 @ 3.57 MHz
+     palette                      palette
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     screen                       Video Screen
+     speaker                      Speaker
+
+Driver c128 (Commodore 128 (NTSC)):
+   <root>                         Commodore 128 (NTSC)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u10                          Zilog Z80 @ 4.09 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8564 VIC-II @ 8.18 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 1.02 MHz
+     u5                           MOS 6581 SID @ 1.02 MHz
+     u6                           MOS Technology 8502 @ 1.02 MHz
+     u7                           MOS 8722 MMU @ 1.02 MHz
+     user                         PET user port
+
+Driver c128_de (Commodore 128 (Germany)):
+   <root>                         Commodore 128 (Germany)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128_se (Commodore 128 (Sweden/Finland)):
+   <root>                         Commodore 128 (Sweden/Finland)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128cr (Commodore 128CR (NTSC, prototype)):
+   <root>                         Commodore 128CR (NTSC, prototype)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u10                          Zilog Z80 @ 4.09 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8564 VIC-II @ 8.18 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 1.02 MHz
+     u5                           MOS 6581 SID @ 1.02 MHz
+     u6                           MOS Technology 8502 @ 1.02 MHz
+     u7                           MOS 8722 MMU @ 1.02 MHz
+     user                         PET user port
+
+Driver c128d (Commodore 128D (NTSC, prototype)):
+   <root>                         Commodore 128D (NTSC, prototype)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u10                          Zilog Z80 @ 4.09 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8564 VIC-II @ 8.18 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 1.02 MHz
+     u5                           MOS 6581 SID @ 1.02 MHz
+     u6                           MOS Technology 8502 @ 1.02 MHz
+     u7                           MOS 8722 MMU @ 1.02 MHz
+     user                         PET user port
+
+Driver c128d81 (Commodore 128D/81 (NTSC, prototype)):
+   <root>                         Commodore 128D/81 (NTSC, prototype)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1563                      Commodore 1563 3.5" Disk Drive
+         u1                       MOS Technology 6502 @ 2.00 MHz
+         u4                       Western Digital WD1772 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             35dd                 3.5" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u5                       MOS 8520 CIA @ 2.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u10                          Zilog Z80 @ 4.09 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8564 VIC-II @ 8.18 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 1.02 MHz
+     u5                           MOS 6581 SID @ 1.02 MHz
+     u6                           MOS Technology 8502 @ 1.02 MHz
+     u7                           MOS 8722 MMU @ 1.02 MHz
+     user                         PET user port
+
+Driver c128dcr (Commodore 128DCR (NTSC)):
+   <root>                         Commodore 128DCR (NTSC)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u10                          Zilog Z80 @ 4.09 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8564 VIC-II @ 8.18 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 1.02 MHz
+     u5                           MOS 6581 SID @ 1.02 MHz
+     u6                           MOS Technology 8502 @ 1.02 MHz
+     u7                           MOS 8722 MMU @ 1.02 MHz
+     user                         PET user port
+
+Driver c128dcr_de (Commodore 128DCR (Germany)):
+   <root>                         Commodore 128DCR (Germany)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128dcr_se (Commodore 128DCR (Sweden/Finland)):
+   <root>                         Commodore 128DCR (Sweden/Finland)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128dcrp (Commodore 128DCR (PAL)):
+   <root>                         Commodore 128DCR (PAL)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128dp (Commodore 128D (PAL)):
+   <root>                         Commodore 128D (PAL)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c128p (Commodore 128 (PAL)):
+   <root>                         Commodore 128 (PAL)
+     cart_list                    Software List
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list_c64                Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop_list                    Software List
+     flop_list_c64_misc           Software List
+     flop_list_c64_orig           Software List
+     from                         Generic ROM Socket / RAM Socket
+     from_list                    Software List
+     gfxdecode                    gfxdecode
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1571                      Commodore 1571 Disk Drive
+         u1                       MOS Technology 6502 @ 1.00 MHz
+         u11                      Western Digital WD1770 FDC @ 8.00 MHz
+         u20                      MOS 6526 CIA @ 1.00 MHz
+         u4                       MOS 6522 VIA @ 1.00 MHz
+         u6                       Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525qd                5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         u9                       MOS 6522 VIA @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     screen80                     Video Screen
+     speaker                      Speaker
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u10                          Zilog Z80 @ 3.94 MHz
+     u11                          MOS 8721 PLA
+     u21                          MOS 8566 VIC-II @ 7.88 MHz
+     u22                          MOS 8563 VDC @ 16.00 MHz
+     u4                           MOS 6526 CIA @ 985.24 kHz
+     u5                           MOS 6581 SID @ 985.24 kHz
+     u6                           MOS Technology 8502 @ 985.24 kHz
+     u7                           MOS 8722 MMU @ 985.24 kHz
+     user                         PET user port
+
+Driver c64 (Commodore 64 (NTSC)):
+   <root>                         Commodore 64 (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver c64_jp (Commodore 64 (Japan)):
+   <root>                         Commodore 64 (Japan)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver c64_se (Commodore 64 / VIC-64S (Sweden/Finland)):
+   <root>                         Commodore 64 / VIC-64S (Sweden/Finland)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64c (Commodore 64C (NTSC)):
+   <root>                         Commodore 64C (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver c64c_es (Commodore 64C (Spain)):
+   <root>                         Commodore 64C (Spain)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64c_se (Commodore 64C (Sweden/Finland)):
+   <root>                         Commodore 64C (Sweden/Finland)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64cp (Commodore 64C (PAL)):
+   <root>                         Commodore 64C (PAL)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64g (Commodore 64G (PAL)):
+   <root>                         Commodore 64G (PAL)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64gs (Commodore 64 Games System (PAL)):
+   <root>                         Commodore 64 Games System (PAL)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 8580 SID @ 985.24 kHz
+     u19                          MOS 8565 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver c64p (Commodore 64 (PAL)):
+   <root>                         Commodore 64 (PAL)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver cd6809 (CD-6809):
+   <root>                         CD-6809 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       cd6809_fdc                 Codimex CD-6809 Disk BASIC (1986) @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver clipper (Clipper):
+   <root>                         Clipper
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525                      Software List
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver coco (Color Computer):
+   <root>                         Color Computer @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver coco2 (Color Computer 2):
+   <root>                         Color Computer 2 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco2b (Color Computer 2B):
+   <root>                         Color Computer 2B @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847T1 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco2bh (Color Computer 2B (HD6309)):
+   <root>                         Color Computer 2B (HD6309) @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847T1 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco2h (Color Computer 2 (HD6309)):
+   <root>                         Color Computer 2 (HD6309) @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco3 (Color Computer 3 (NTSC)):
+   <root>                         Color Computer 3 (NTSC) @ 894.88 kHz
+     cart_list                    Software List
+     cassette                     Cassette
+     dac                          6-Bit Binary Weighted DAC
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     flop_list                    Software List
+     gime                         TCC1014 (VC2645QC) GIME (NTSC) @ 28.63 MHz
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sbs                          1-Bit DAC
+     screen                       Video Screen @ 14.31 MHz
+     speaker                      Speaker
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco3dw1 (Color Computer 3 (NTSC; HDB-DOS)):
+   <root>                         Color Computer 3 (NTSC; HDB-DOS) @ 894.88 kHz
+     cart_list                    Software List
+     cassette                     Cassette
+     dac                          6-Bit Binary Weighted DAC
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       cc3hdb1                    CoCo3 HDB-DOS @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     flop_list                    Software List
+     gime                         TCC1014 (VC2645QC) GIME (NTSC) @ 28.63 MHz
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sbs                          1-Bit DAC
+     screen                       Video Screen @ 14.31 MHz
+     speaker                      Speaker
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco3h (Color Computer 3 (NTSC; HD6309)):
+   <root>                         Color Computer 3 (NTSC; HD6309) @ 894.88 kHz
+     cart_list                    Software List
+     cassette                     Cassette
+     dac                          6-Bit Binary Weighted DAC
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdcv11                     CoCo FDC v1.1 @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     flop_list                    Software List
+     gime                         TCC1014 (VC2645QC) GIME (NTSC) @ 28.63 MHz
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sbs                          1-Bit DAC
+     screen                       Video Screen @ 14.31 MHz
+     speaker                      Speaker
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver coco3p (Color Computer 3 (PAL)):
+   <root>                         Color Computer 3 (PAL) @ 889.84 kHz
+     cart_list                    Software List
+     cassette                     Cassette
+     dac                          6-Bit Binary Weighted DAC
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 889.84 kHz
+       fdcv11                     CoCo FDC v1.1 @ 889.84 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     flop_list                    Software List
+     gime                         TCC1014 (VC2645QC) GIME (PAL) @ 28.47 MHz
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 889.84 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sbs                          1-Bit DAC
+     screen                       Video Screen @ 14.31 MHz
+     speaker                      Speaker
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver cocoe (Color Computer (Extended BASIC 1.0)):
+   <root>                         Color Computer (Extended BASIC 1.0) @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdc                        CoCo FDC @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver cocoeh (Color Computer (Extended BASIC 1.0; HD6309)):
+   <root>                         Color Computer (Extended BASIC 1.0; HD6309) @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       fdc                        CoCo FDC @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver cocoh (Color Computer (HD6309)):
+   <root>                         Color Computer (HD6309) @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver cp400 (CP400):
+   <root>                         CP400 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       cp450_fdc                  Prológica CP-450 BASIC Disco V. 1.0 (1984) @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver cp400c2 (CP400 Color II):
+   <root>                         CP400 Color II @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       cp450_fdc                  Prológica CP-450 BASIC Disco V. 1.0 (1984) @ 894.88 kHz
+         cachebuffer              RAM
+         cloud9                   Dallas DS1315 Phantom Time Chip
+         disto                    OKI MSM6242 RTC @ 32.76 kHz
+         wd17xx                   Western Digital WD1773 FDC @ 8.00 MHz
+           0                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             525dd                5.25" double density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver d64plus (Dragon 64 Plus):
+   <root>                         Dragon 64 Plus @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     crtc                         Hitachi HD6845S CRTC @ 1.77 MHz
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     gfxdecode                    gfxdecode
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     palette                      palette
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     plus_screen                  Video Screen @ 14.21 MHz
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver dgnalpha (Dragon Professional (Alpha)):
+   <root>                         Dragon Professional (Alpha) @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     ay8912                       AY-3-8912A PSG @ 1.00 MHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dgnalpha_flop_list           Software List
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     nmis                         Input Merger (any high)
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     pia2                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+     wd2797                       Western Digital WD2797 FDC @ 1.00 MHz
+       0                          Floppy drive connector abstraction
+         dd                       3.5" double density floppy drive
+           floppysound            Floppy sound @ 44.10 kHz
+           flopsndout             Speaker
+       1                          Floppy drive connector abstraction
+         dd                       3.5" double density floppy drive
+           floppysound            Floppy sound @ 44.10 kHz
+           flopsndout             Speaker
+       2                          Floppy drive connector abstraction
+       3                          Floppy drive connector abstraction
+
+Driver dkingjr (Donkey King Jr. (bootleg of Donkey Kong Jr.)):
+   <root>                         Donkey King Jr. (bootleg of Donkey Kong Jr.)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkong (Donkey Kong (US set 1)):
+   <root>                         Donkey Kong (US set 1)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkong3 (Donkey Kong 3 (US)):
+   <root>                         Donkey Kong 3 (US)
+     gfxdecode                    gfxdecode
+     latch1                       8-bit latch
+     latch2                       8-bit latch
+     latch3                       8-bit latch
+     maincpu                      Zilog Z80 @ 4.00 MHz
+     mono                         Speaker
+     n2a03a                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     n2a03b                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     z80dma                       Z80 DMA Controller @ 3.07 MHz
+
+Driver dkong3b (Donkey Kong 3 (bootleg on Donkey Kong Jr. hardware)):
+   <root>                         Donkey Kong 3 (bootleg on Donkey Kong Jr. hardware)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkong3hs (Donkey Kong High Score Kit (hack,V1.0a)):
+   <root>                         Donkey Kong High Score Kit (hack,V1.0a)
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     latch1                       8-bit latch
+     latch2                       8-bit latch
+     latch3                       8-bit latch
+     maincpu                      Zilog Z80 @ 4.00 MHz
+     mono                         Speaker
+     n2a03a                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     n2a03b                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     z80dma                       Z80 DMA Controller @ 3.07 MHz
+
+Driver dkong3j (Donkey Kong 3 (Japan)):
+   <root>                         Donkey Kong 3 (Japan)
+     gfxdecode                    gfxdecode
+     latch1                       8-bit latch
+     latch2                       8-bit latch
+     latch3                       8-bit latch
+     maincpu                      Zilog Z80 @ 4.00 MHz
+     mono                         Speaker
+     n2a03a                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     n2a03b                       Ricoh N2A03 @ 1.78 MHz
+       nesapu                     N2A03 APU @ 1.78 MHz
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     z80dma                       Z80 DMA Controller @ 3.07 MHz
+
+Driver dkongddk (Double Donkey Kong (hack,V1.2)):
+   <root>                         Double Donkey Kong (hack,V1.2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongf (Donkey Kong Foundry (hack)):
+   <root>                         Donkey Kong Foundry (hack)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkonghrd (Donkey Kong (hard kit)):
+   <root>                         Donkey Kong (hard kit)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkonghs (Donkey Kong High Score Kit (hack,V1.2)):
+   <root>                         Donkey Kong High Score Kit (hack,V1.2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongike (Donkey Kong/DK (Japan) (hack,V1.1 IKE)):
+   <root>                         Donkey Kong/DK (Japan) (hack,V1.1 IKE)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongj (Donkey Kong (Japan set 1)):
+   <root>                         Donkey Kong (Japan set 1)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjnrj (Donkey Kong Junior (Japan set F-1)):
+   <root>                         Donkey Kong Junior (Japan set F-1)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjo (Donkey Kong (Japan set 2)):
+   <root>                         Donkey Kong (Japan set 2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjo1 (Donkey Kong (Japan set 3)):
+   <root>                         Donkey Kong (Japan set 3)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjr (Donkey Kong Junior (US set F-2)):
+   <root>                         Donkey Kong Junior (US set F-2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjr2 (Donkey Kong Junior (US, bootleg?)):
+   <root>                         Donkey Kong Junior (US, bootleg?)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjrb (Donkey Kong Jr. (bootleg)):
+   <root>                         Donkey Kong Jr. (bootleg)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjrc (Donkey Kong/JR (combo) (hack,V1.2)):
+   <root>                         Donkey Kong/JR (combo) (hack,V1.2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjre (Donkey Kong Junior (E kit)):
+   <root>                         Donkey Kong Junior (E kit)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjrhs (Donkey Junior High Score Kit (hack,V1.2)):
+   <root>                         Donkey Junior High Score Kit (hack,V1.2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjrj (Donkey Kong Jr. (Japan)):
+   <root>                         Donkey Kong Jr. (Japan)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongjrpb (Donkey Kong Junior (P kit, bootleg)):
+   <root>                         Donkey Kong Junior (P kit, bootleg)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongo (Donkey Kong (US set 2)):
+   <root>                         Donkey Kong (US set 2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongpe (Donkey Kong: Pauline Edition Rev 5 (2013-04-22)):
+   <root>                         Donkey Kong: Pauline Edition Rev 5 (2013-04-22)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongx (Donkey Kong II: Jumpman Returns (hack, V1.2)):
+   <root>                         Donkey Kong II: Jumpman Returns (hack, V1.2)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dkongx11 (Donkey Kong II: Jumpman Returns (hack, V1.1)):
+   <root>                         Donkey Kong II: Jumpman Returns (hack, V1.1)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     eeprom                       Serial EEPROM 93C46 (128x8)
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dragon200 (Dragon 200):
+   <root>                         Dragon 200 @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver dragon200e (Dragon 200-E):
+   <root>                         Dragon 200-E @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver dragon32 (Dragon 32):
+   <root>                         Dragon 32 @ 888.62 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flop_list             Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver dragon64 (Dragon 64):
+   <root>                         Dragon 64 @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 888.62 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver dragon64h (Dragon 64 (HD6309E CPU)):
+   <root>                         Dragon 64 (HD6309E CPU) @ 888.62 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 888.62 kHz
+       dragon_fdc                 Dragon FDC @ 888.62 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 888.62 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.21 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (PAL) @ 4.43 MHz
+
+Driver drakton (Drakton (DK conversion)):
+   <root>                         Drakton (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver drktnjr (Drakton (DKJr conversion)):
+   <root>                         Drakton (DKJr conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver dx64 (DX-64 (NTSC)):
+   <root>                         DX-64 (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver edu64 (Educator 64 (NTSC)):
+   <root>                         Educator 64 (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver herbiedk (Herbie at the Olympics (DK conversion)):
+   <root>                         Herbie at the Olympics (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver herodk (Hero in the Castle of Doom (DK conversion)):
+   <root>                         Hero in the Castle of Doom (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver herodku (Hero in the Castle of Doom (DK conversion not encrypted)):
+   <root>                         Hero in the Castle of Doom (DK conversion not encrypted)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver hunchbkd (Hunchback (DK conversion)):
+   <root>                         Hunchback (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver jrking (Junior King (bootleg of Donkey Kong Jr.)):
+   <root>                         Junior King (bootleg of Donkey Kong Jr.)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver lzcolor64 (Color64):
+   <root>                         Color64 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver maguila (Up Maguila (bootleg of Donkey Kong Jr.)):
+   <root>                         Up Maguila (bootleg of Donkey Kong Jr.)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver mc10 (MC-10):
+   <root>                         MC-10
+     cass_list                    Software List
+     cassette                     Cassette
+     dac                          1-Bit DAC
+     ext                          MC-10 Cartridge Slot
+     maincpu                      Motorola MC6803 @ 3.57 MHz
+     mc6847                       Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     screen                       Video Screen @ 7.15 MHz
+     speaker                      Speaker
+
+Driver ms1600 (Micro-SEP 1600):
+   <root>                         Micro-SEP 1600 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver mx1600 (MX-1600):
+   <root>                         MX-1600 @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver pestplce (Pest Place):
+   <root>                         Pest Place
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls174.3d                     8-bit latch
+     ls259.4h                     8-bit latch
+     ls259.5h                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver pet64 (PET 64 / CBM 4064 (NTSC)):
+   <root>                         PET 64 / CBM 4064 (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       c1541                      Commodore 1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver radarscp (Radar Scope (TRS02, rev. D)):
+   <root>                         Radar Scope (TRS02, rev. D)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+
+Driver radarscp1 (Radar Scope (TRS01)):
+   <root>                         Radar Scope (TRS01)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     m58819                       M68819S
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     tms                          M58817 @ 640.00 kHz
+     virtual_p1                   8-bit latch
+     virtual_p2                   8-bit latch
+
+Driver radarscpc (Radar Scope (TRS02?, rev. C)):
+   <root>                         Radar Scope (TRS02?, rev. C)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+
+Driver sbdk (Super Bike (DK conversion)):
+   <root>                         Super Bike (DK conversion)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver shootgal (Shooting Gallery):
+   <root>                         Shooting Gallery
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver spcfrcii (Special Forces II):
+   <root>                         Special Forces II
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver spclforc (Special Forces):
+   <root>                         Special Forces
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Signetics 2650 @ 1.53 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver strtheat (Street Heat (set 1, newer?)):
+   <root>                         Street Heat (set 1, newer?)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver strtheata (Street Heat (set 2, older?)):
+   <root>                         Street Heat (set 2, older?)
+     discrete                     Discrete Sound
+     dma8257                      Intel 8257 DMA Controller @ 3.07 MHz
+     gfxdecode                    gfxdecode
+     ls175.3d                     8-bit latch
+     ls259.6h                     8-bit latch
+     maincpu                      Zilog Z80 @ 3.07 MHz
+     mono                         Speaker
+     palette                      palette
+     screen                       Video Screen @ 6.14 MHz
+     soundcpu                     MB8884 @ 6.00 MHz
+     virtual_p2                   8-bit latch
+     watchdog                     Watchdog Timer
+
+Driver sx64 (SX-64 / Executive 64 (NTSC)):
+   <root>                         SX-64 / Executive 64 (NTSC)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 1.02 MHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 1.02 MHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 1.02 MHz
+     u19                          MOS 6567 VIC-II @ 1.02 MHz
+     u2                           MOS 6526 CIA @ 1.02 MHz
+     u7                           MOS Technology 6510 @ 1.02 MHz
+     user                         PET user port
+
+Driver sx64p (SX-64 / Executive 64 (PAL)):
+   <root>                         SX-64 / Executive 64 (PAL)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver t4426 (Terco 4426 CNC Programming station):
+   <root>                         Terco 4426 CNC Programming station @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       t4426                      Terco CNC Programming Station 4426 multi cart @ 894.88 kHz
+         acia                     MC6850 ACIA
+         brg                      MC14411 Bit Rate Generator @ 1.84 MHz
+         pia                      6821 PIA
+         ser2                     RS-232 Port
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+     vhd0                         CoCo Virtual Hard Disk
+     vhd1                         CoCo Virtual Hard Disk
+
+Driver tanodr64 (Tano Dragon 64 (NTSC)):
+   <root>                         Tano Dragon 64 (NTSC) @ 894.88 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       sdtandy_fdc                SDTANDY FDC @ 894.88 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver tanodr64h (Tano Dragon 64 (NTSC; HD6309E)):
+   <root>                         Tano Dragon 64 (NTSC; HD6309E) @ 894.88 kHz
+     acia                         MOS 6551 ACIA
+       clock                      Clock
+     cassette                     Cassette
+     coco_cart_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dragon_cass_list             Software List
+     dragon_flex_list             Software List
+     dragon_flop_list             Software List
+     dragon_os9_list              Software List
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       sdtandy_fdc                SDTANDY FDC @ 894.88 kHz
+         wd2797                   Western Digital WD2797 FDC @ 1.00 MHz
+           0                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           1                      Floppy drive connector abstraction
+             qd                   5.25" quad density floppy drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+           2                      Floppy drive connector abstraction
+           3                      Floppy drive connector abstraction
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Hitachi HD6309E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     printer                      Printer
+     ram                          RAM
+     rs232                        RS-232 Port
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver tesa6240 (Etikettendrucker 6240):
+   <root>                         Etikettendrucker 6240
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver ti99_4 (TI-99/4 Home Computer (US)):
+   <root>                         TI-99/4 Home Computer (US)
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     screen                       Video Screen @ 5.36 MHz
+     sound_out                    Speaker
+     soundchip                    SN94624 @ 447.44 kHz
+     tms9901                      TMS9901 Programmable System Interface
+     vdp                          TMS9918 VDP @ 10.73 MHz
+
+Driver ti99_4a (TI-99/4A Home Computer (US)):
+   <root>                         TI-99/4A Home Computer (US)
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     screen                       Video Screen @ 5.36 MHz
+     sound_out                    Speaker
+     soundchip                    SN94624 @ 447.44 kHz
+     tms9901                      TMS9901 Programmable System Interface
+     vdp                          TMS9918A VDP @ 10.73 MHz
+
+Driver ti99_4ae (TI-99/4A Home Computer (Europe)):
+   <root>                         TI-99/4A Home Computer (Europe)
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     screen                       Video Screen @ 5.36 MHz
+     sound_out                    Speaker
+     soundchip                    SN94624 @ 447.44 kHz
+     tms9901                      TMS9901 Programmable System Interface
+     vdp                          TMS9929A VDP @ 10.73 MHz
+
+Driver ti99_4e (TI-99/4 Home Computer (Europe)):
+   <root>                         TI-99/4 Home Computer (Europe)
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     screen                       Video Screen @ 5.36 MHz
+     sound_out                    Speaker
+     soundchip                    SN94624 @ 447.44 kHz
+     tms9901                      TMS9901 Programmable System Interface
+     vdp                          TMS9929 VDP @ 10.73 MHz
+
+Driver ti99_4ev (TI-99/4A Home Computer with EVPC):
+   <root>                         TI-99/4A Home Computer with EVPC
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     evpc_conn                    EVPC clock connector
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+       peb                        Peripheral expansion box with EVPC
+         slot2                    TI P-Box slot
+           evpc                   SNUG Enhanced Video Processor Card
+             colorbus             V9938 Color bus
+             screen               Video Screen @ 21.47 MHz
+             sound_out            Speaker
+             soundchip            SN94624 @ 447.44 kHz
+             vdp                  Yamaha V9938 VDP @ 21.47 MHz
+         slot3                    TI P-Box slot
+         slot4                    TI P-Box slot
+         slot5                    TI P-Box slot
+         slot6                    TI P-Box slot
+         slot7                    TI P-Box slot
+         slot8                    TI P-Box slot
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     tms9901                      TMS9901 Programmable System Interface
+
+Driver ti99_4qi (TI-99/4QI Home Computer (US)):
+   <root>                         TI-99/4QI Home Computer (US)
+     cart_list_ti99               Software List
+     cass_out                     Speaker
+     cassette1                    Cassette
+     cassette2                    Cassette
+     console_grom_0               TMC0430 GROM
+     console_grom_1               TMC0430 GROM
+     console_grom_2               TMC0430 GROM
+     datamux_16_8                 TI-99 Databus multiplexer
+     gromport                     TI-99 Cartridge port
+       single                     TI-99 Standard cartridge connector
+         cartridge                TI-99 cartridge
+           grom3                  TMC0430 GROM
+           grom4                  TMC0430 GROM
+           grom5                  TMC0430 GROM
+           grom6                  TMC0430 GROM
+           grom7                  TMC0430 GROM
+     internal_32k_mod             RAM
+     ioport                       TI-99 I/O Port
+     joyport                      TI-99 Joystick port
+       twinjoy                    TI-99/4(A) Twin Joysticks
+     maincpu                      Texas Instruments TMS9900 @ 3.00 MHz
+     scratchpad                   RAM
+     screen                       Video Screen @ 5.36 MHz
+     sound_out                    Speaker
+     soundchip                    SN94624 @ 447.44 kHz
+     tms9901                      TMS9901 Programmable System Interface
+     vdp                          TMS9918A VDP @ 10.73 MHz
+
+Driver trsvidtx (Videotex):
+   <root>                         Videotex @ 894.88 kHz
+     cassette                     Cassette
+     coco_cart_list               Software List
+     coco_flop_list               Software List
+     dac                          6-Bit Binary Weighted DAC
+     dragon_cart_list             Software List
+     dwsock                       Virtual Becker Port
+     ext                          CoCo Cartridge Slot @ 894.88 kHz
+       pak                        CoCo Program PAK @ 894.88 kHz
+     firqs                        Input Merger (any high)
+     floating                     Address Map Bank
+     irqs                         Input Merger (any high)
+     maincpu                      Motorola MC6809E @ 894.88 kHz
+     pia0                         6821 PIA
+     pia1                         6821 PIA
+     ram                          RAM
+     rs232                        RS-232 Port
+       rs_printer                 Radio Shack Serial Printer
+         printer                  Printer
+     sam                          MC6883 SAM @ 14.31 MHz
+     sbs                          1-Bit DAC
+     screen                       Video Screen
+     speaker                      Speaker
+     vdg                          Motorola MC6847 VDG (NTSC) @ 3.57 MHz
+
+Driver vip64 (VIP-64 (Sweden/Finland)):
+   <root>                         VIP-64 (Sweden/Finland)
+     cart_list_c64                Software List
+     cart_list_vic10              Software List
+     cass_list                    Software List
+     exp                          C64 expansion port @ 985.24 kHz
+     flop525_misc                 Software List
+     flop525_orig                 Software List
+     iec10                        CBM IEC slot
+     iec11                        CBM IEC slot
+     iec4                         CBM IEC slot
+     iec8                         CBM IEC slot
+       sx1541                     SX1541 Disk Drive
+         uab1                     MOS 6522 VIA @ 1.00 MHz
+         uc4                      Commodore 64H156 @ 16.00 MHz
+           0                      Floppy drive connector abstraction
+             525ssqd              ALPS 32551901/32551902 Floppy Drive
+               floppysound        Floppy sound @ 44.10 kHz
+               flopsndout         Speaker
+         ucd4                     MOS 6522 VIA @ 1.00 MHz
+         ucd5                     MOS Technology 6502 @ 1.00 MHz
+     iec9                         CBM IEC slot
+     iec_bus                      CBM IEC bus
+     irq                          Input Merger (any high)
+     joy1                         Atari VCS controller port
+     joy2                         Atari VCS controller port
+       joy                        Atari / CBM Digital joystick
+     mono                         Speaker
+     nmi                          Input Merger (any high)
+     quickload                    Quickload
+     ram                          RAM
+     screen                       Video Screen
+     tape                         Commodore Datasette Port
+       c1530                      Commodore 1530 Datassette
+         cassette                 Cassette
+     u1                           MOS 6526 CIA @ 985.24 kHz
+     u17                          82S100-series PLA
+     u18                          MOS 6581 SID @ 985.24 kHz
+     u19                          MOS 6569 VIC-II @ 985.24 kHz
+     u2                           MOS 6526 CIA @ 985.24 kHz
+     u7                           MOS Technology 6510 @ 985.24 kHz
+     user                         PET user port
+
+Driver xegs (Atari XE Game System):
+   <root>                         Atari XE Game System
+     antic                        Atari ANTIC
+     cartleft                     Atari XEGS Cartridge Slot
+     cass_list                    Software List
+     dac                          1-Bit DAC
+     fdc                          Atari FDC
+       floppy0                    Floppy Disk
+       floppy1                    Floppy Disk
+       floppy2                    Floppy Disk
+       floppy3                    Floppy Disk
+     flop_list                    Software List
+     gtia                         Atari GTIA
+     maincpu                      MOS Technology 6502 @ 1.78 MHz
+     palette                      palette
+     pia                          6821 PIA
+     pokey                        Atari C012294 POKEY @ 1.78 MHz
+     ram                          RAM
+     scantimer                    Timer
+     screen                       Video Screen
+     sio                          Atari 8 bit SIO Slot
+     speaker                      Speaker
+     xegs_list                    Software List

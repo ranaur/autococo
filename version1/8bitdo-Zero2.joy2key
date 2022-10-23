@@ -1,0 +1,25 @@
+#
+#	8bitdo - Zero 2
+#
+# jstest /dev/input/js0
+#
+# Cross:
+#	up -32768 down: 32768 left: -32768 right: 32768
+# Buttons:
+#	A 1
+#	B 0
+#	X 3
+#	Y 2
+#	R 5
+#	L 4
+#	Start 9
+#	Select 8
+#
+#COMMON
+#-buttons Tab Return z a
+#-axis Left Right Up Down
+
+START xroar
+-axis Left Right Up Down
+#-buttons B A Y X L R 6 7 Select Start 10 11 12 13 14 15 16
+-buttons NATIVE,SPACE ENTER Y X 1,Y 2,N 6 7 CLEAR ENTER 10 11 12 13 14 15 16
