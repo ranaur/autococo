@@ -84,3 +84,6 @@ TRANSLATION=yes/no if is a translation
 CHEAT=yes/no it is a cheated version
 TEXT=yex/no text version
 PORT=COCO/ZXSPECTRUM
+
+##########
+
