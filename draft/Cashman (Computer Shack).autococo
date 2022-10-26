@@ -1,19 +1,19 @@
 package:
-  program: Cashman
-  author: Computer Shack
-  genre: .
-  file: Cashman (Computer Shack).zip
-  url: https://colorcomputerarchive.com/repo//home/pi/color-computer/20221008 autococo/Cashman (Computer Shack).zip
-  md5: dba1eccaf9d7d0272f54c4e5aad79bcc
-  language: English
+ program: Cashman
+ author: Computer Shack
+ genre: .
+ file: Cashman (Computer Shack).zip
+ url: https://colorcomputerarchive.com/repo//home/pi/color-computer/20221008 autococo/Cashman (Computer Shack).zip
+ md5: dba1eccaf9d7d0272f54c4e5aad79bcc
+ language: English
 
 setup:
-  architecture: coco2
-  cpu: 6809
-  tv-type: ntsc
-  artifact: non
-  os9: no
-  ssc: no
-  real talk: no
-  command: LOADM"CASHMAN":EXEC
-  floppy0: CASHMAN.DSK
+ architecture: coco2
+ cpu: 6809
+ tv_type: ntsc
+ artifact: no
+ os9: no
+ ssc: no
+ real talk: no
+ command: LOADM"CASHMAN":EXEC
+ floppy0: CASHMAN.DSK

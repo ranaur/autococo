@@ -1,39 +1,69 @@
+# inferred__
+# inferred_package_
+#   inferred_package_author:
+#   inferred_package_file:
+#	inferred_package_genre:
+#   inferred_package_language:
+#   inferred_package_md5:
+#   inferred_package_program:
+#   inferred_package_url:
+# inferred_setup_
+#   inferred_setup_architecture:
+#   inferred_setup_artifact
+#   inferred_setup_command
+#   inferred_setup_cpu:
+#   inferred_setup_floppy0
+#   inferred_setup_os9:
+#   inferred_setup_ssc:
+#   inferred_setup_rtr:
+#   inferred_setup_tv_type:
+#   inferred_setup_cocovga:
+#   inferred_setup_cocopsg:
+
+# CCC
+#   inferred_setup_rompack: <file>
+
+
 function has_substring() {
         [[ "$1" == *"$2"* ]]
 }
 
-function infer_cocoarchive() {
-	DIRNAME=$(dirname "$1")
-	GENRE=$(basename "$DIRNAME")
+# infer package details from a cocoarchive file
+#   Currently only works with ZIP file from Disks directory
+#
+function infer_archive_cocoarchive() {
+	FULLFILEPATH=$(realpath "$1")
 
-	FILE=$(realpath "$1")
-	FILENAME=`basename "$1"`
-	MD5=$(md5sum "$FILE" | cut -b -32)
+	DIRNAME=$(dirname "$FULLFILEPATH")
+	inferred_package_genre=$(basename "$DIRNAME")
+
+	inferred_package_filename=`basename "$1"`
+	inferred_package_md5=$(md5sum "$FULLFILEPATH" | cut -b -32)
 
 		# remove extension (.zip)
-	PROGRAM="${FILENAME%.*}"
-	MACHINE=coco2
+	PROGRAM="${inferred_package_filename%.*}"
+	inferred_setup_architecture=coco2
 	if has_substring "$PROGRAM" "(Coco 3)" ; then
-		MACHINE=coco3
+		inferred_setup_architecture=coco3
 		PROGRAM="${PROGRAM// (Coco 3)/}"
 	fi
 	if has_substring "$PROGRAM" "(Coco 1-2)" ; then
-		MACHINE=coco1
+		inferred_setup_architecture=coco1
 		PROGRAM="${PROGRAM// (Coco 1-2)/}"
 	fi
 
 	if has_substring "$PROGRAM" "(SSC)" ; then
-		SSC=yes
+		inferred_setup_ssc=yes
 		PROGRAM="${PROGRAM// (SSC)/}"
 	else
-		SSC=no
+		inferred_setup_ssc=no
 	fi
 
 	if has_substring "$PROGRAM" "(Real Talker required)" ; then
-		RTR=yes
+		inferred_setup_rtr=yes
 		PROGRAM="${PROGRAM// (Real Talker required)/}"
 	else
-		RTR=no
+		inferred_setup_rtr=no
 	fi
 
 	VIDEO_FORMAT=NTSC
@@ -46,34 +76,35 @@ function infer_cocoarchive() {
 		PROGRAM="${PROGRAM// (PAL 50Hz Coco 2)/}"
 	fi
 	PROGRAM="${PROGRAM// (NTSC)/}"
+	inferred_setup_tv_type=${VIDEO_FORMAT,,}
 
 	if has_substring "$PROGRAM" "(OS-9)" ; then
-		OS9=yes
+		inferred_setup_os9=yes
 		PROGRAM="${PROGRAM// (OS-9)/}"
 	else
-		OS9=no
+		inferred_setup_os9=no
 	fi
 
-	PROCESSOR=6809
+	inferred_setup_cpu=6809
 	if has_substring "$PROGRAM" "(6309 optimized)" ; then
-		PROCESSOR=6309
+		inferred_setup_cpu=6309
 		PROGRAM="${PROGRAM// (6309 optimized)/}"
 
 	fi
 	if has_substring "$PROGRAM" "(6309 compatible)" ; then
-		PROCESSOR=6309
+		inferred_setup_cpu=6309
 		PROGRAM="${PROGRAM// (6309 compatible)/}"
 	fi
 	if has_substring "$PROGRAM" "(6809 optimized)" ; then
-		PROCESSOR=6809
+		inferred_setup_cpu=6809
 		PROGRAM="${PROGRAM// (6809 optimized)/}"
 	fi
 
 	if has_substring "$PROGRAM" "(CocoVGA)" ; then
 		PROGRAM="${PROGRAM// (CocoVGA)/}"
-		COCOVGA=yes
+		inferred_setup_cocovga=yes
 	else
-		COCOVGA=no
+		inferred_setup_cocovga=no
 	fi
 
 	if has_substring "$PROGRAM" "(SG-8)" ; then
@@ -101,10 +132,10 @@ function infer_cocoarchive() {
 	fi
 
 	if has_substring "$PROGRAM" "(CoCo PSG)" ; then
-		COCOPSG=yes
+		inferred_setup_cocopsg=yes
 		PROGRAM="${PROGRAM// (CoCo PSG)/}"
 	else
-		COCOPSG=yes
+		inferred_setup_cocopsg=yes
 	fi
 	if has_substring "$PROGRAM" "(Enhanced by sixxie)" ; then
 		SIXXIE=yes
@@ -144,49 +175,55 @@ function infer_cocoarchive() {
 		TEXT=no
 	fi
 
-	LANGUAGE=English
+	inferred_package_language=English
 	if has_substring "$PROGRAM" "(English translation)" ; then
 		TRANSLATION=yes
 		PROGRAM="${PROGRAM// (English translation)/}"
 	fi
 	if has_substring "$PROGRAM" "(Portuguese)" ; then
-		LANGUAGE=Portuguese
+		inferred_package_language=Portuguese
 		PROGRAM="${PROGRAM// (Portuguese)/}"
 	fi
 	if has_substring "$PROGRAM" "(Portuguese Translation)" ; then
-		LANGUAGE=Portuguese
+		inferred_package_language=Portuguese
 		TRANSLATION=yes
 		PROGRAM="${PROGRAM// (Portuguese Translation)/}"
 	fi
 	if has_substring "$PROGRAM" "(French)" ; then
-		LANGUAGE=French
+		inferred_package_language=French
 		PROGRAM="${PROGRAM// (French)/}"
 	fi
 	if has_substring "$PROGRAM" "(French Translation)" ; then
-		LANGUAGE=French
+		inferred_package_language=French
 		TRANSLATION=yes
 		PROGRAM="${PROGRAM// (French Translation)/}"
 	fi
 
-AUTHOR="${PROGRAM#* (}"
-AUTHOR="${AUTHOR%%)*}"
-if [ -z "$AUTHOR" ] ; then
-	AUTHOR="Unknown"
-fi
-PROGRAM="${PROGRAM% (*}"
+	inferred_package_author="${PROGRAM#* (}"
+	inferred_package_author="${inferred_package_author%%)*}"
+	if [ -z "$inferred_package_author" ] ; then
+		inferred_package_author="Unknown"
+	fi
+	inferred_package_program="${PROGRAM% (*}"
 
-DIR=`dirname "$1"`
-if [ -z "$2" ] ; then
-	CATEGORY=`basename "$DIR"`
-else
-	SUBCATEGORY=`basename "$DIR"`
-	CATEGORY=`dirname "$DIR"`
-	CATEGORY=`basename "$CATEGORY"`
-fi
+	GROUPDIRNAME=$(dirname "$DIRNAME")
+	echo GROUP: $(basename "$GROUPDIRNAME")
+	MACROGROUPDIRNAME=$(dirname "$GROUPDIRNAME")
+	echo MACROGROUP: $(basename "$MACROGROUPDIRNAME")
+	if [ -z "$2" ] ; then
+		CATEGORY=`basename "$DIR"`
+	echo CATEGORY: $CATEGORY
+	else
+		SUBCATEGORY=`basename "$DIR"`
+		CATEGORY=`dirname "$DIR"`
+		CATEGORY=`basename "$CATEGORY"`
+	echo CATEGORY: $CATEGORY
+	echo SUBCATEGORY: $SUBCATEGORY
+	fi
 
-TMP=/tmp/ez
-URL="${FILE#*../Color Computer Archive/}"
-URL="https://colorcomputerarchive.com/repo/${URL}"
+	TMP=/tmp/ez
+	inferred_package_url="${FILE#*../Color Computer Archive/}"
+	inferred_package_url="https://colorcomputerarchive.com/repo/${inferred_package_url}"
 
 # extract zip file
 #mkdir -p "$TMP"
@@ -201,27 +238,29 @@ URL="https://colorcomputerarchive.com/repo/${URL}"
 #echo PROGRAM $PROGRAM
 cat << __EOF__
 package:
-  program: $PROGRAM
-  author: $AUTHOR
-  genre: $GENRE
-  file: $FILENAME
-  url: $URL
-  md5: $MD5
-  language: $LANGUAGE
-
+  program: $inferred_package_program
+  author: $inferred_package_author
+  genre: $inferred_package_genre
+  file: $inferred_package_file
+  url: $inferred_package_url
+  md5: $inferred_package_md5
+  language: $inferred_package_language
+  tags: "$TRANSLATION $TEXT $CHEAT $PORT $ALT $SIXXIE"
 setup:
-  architecture: $MACHINE
-  cpu: $PROCESSOR
-  tv-type: ${VIDEO_FORMAT,,}
+  architecture: $inferred_setup_architecture
+  cpu: $inferred_setup_cpu
+  tv_type: $inferred_setup_tv_type
   artifact: no
-  os9: $OS9
-  ssc: $SSC
-  real talk: $RTR
+  os9: $inferred_setup_os9
+  ssc: $inferred_setup_ssc
+  real_talk: $inferred_setup_rtr
+  cocovga: $inferred_setup_cocovga
 __EOF__
 
+	echo VARIABLES[]: ${!inferred_@}
 }
 
-function guess_dsk() { # file.dsk
+function infer_guess_dsk_command() { # file.dsk
 #echo guess_dsk "$@"
 	# return 0 of could guess, -1 if not
 	# outputs: $command => command to load the disk
@@ -241,11 +280,11 @@ function guess_dsk() { # file.dsk
 #echo EXT $ext
 		case $ext in
 		BAS)
-			command="RUN\"$file\""
+			echo "RUN\"$file\""
 			return 0
 			;;
 		BIN)
-			command="LOADM\"$file\":EXEC"
+			echo "LOADM\"$file\":EXEC"
 			return 0
 			;;
 		*)
@@ -276,7 +315,8 @@ function guess_dsk() { # file.dsk
 #command: RUN"$FIRST_BAS"
 #__EOF__
 #	fi
-	TODO # infer the command, inspecting the disk content
+PENDING (3)
+	# infer the command, inspecting the disk content
 	# if there is a RUN.BAS / AUTOEXEC , run it.
 	# If there is X.BIN & X.BAS run the BAS
 }
@@ -288,7 +328,6 @@ function infer_zip() { # file.zip outfile.autococo
 	unzip_at "$1" "$WORKDIR"
 
 	pushd "$WORKDIR" > /dev/null
-#ls -la
 
 	# get all the DSKs files and sort the *BOOT.DSK first, then alphabetically.
 	shopt -s nocaseglob
@@ -297,7 +336,6 @@ function infer_zip() { # file.zip outfile.autococo
 	i=0
 	for element in "${original_dsks[@]}"
 	do
-
 #echo ELEMENT $element
 		if [[ "$element" =~ "BOOT.DSK" ]] ; then
 #echo MATCH
@@ -312,18 +350,7 @@ function infer_zip() { # file.zip outfile.autococo
 
 	i=0
 	for disk in ${dsks[@]} ; do
-#echo DISK $disk
-		diskfile=$(basename "$disk")
-		if [ $OS9 == yes ] ; then
-			command=DOS
-		else
-			guess_dsk "$disk"
-#echo guess result $?
-		fi
-		if [ $i == 0 ] ; then # first disk only
-			echo "  command: $command"
-		fi
-		echo "  floppy$i: $diskfile"
+		infer_dsk $(basename "$disk") $i
 		i=$(($i+1))
 	done
 	popd > /dev/null
@@ -333,19 +360,41 @@ function infer_zip() { # file.zip outfile.autococo
 }
 
 function infer_dsk() { # file.dsk outfile.autococo [number = 0]
-	number=${3:-0}
-	substitute_yaml "$2" floppy$number "$1"
+	extension="${1##*.}"
+	extension=${extension,,}
+	if [[ "$extension" != "cas" ]] ; then exit 1;
 
-	TODO # 
+	number=${3:-0}
+	
+	declare "inferred_setup_floppy$number=$(basename `$1`)"
+	
+	if (( $number == 0 )) then 
+		if [ $inferred_setup_os9 == yes ] ; then
+			inferred_setup_command=DOS
+		else
+			inferred_setup_command=`infer_guess_dsk_command "$disk"`
+		fi
+	fi
 }
 
 function infer_cas() { # file.dsk outfile.autococo
-	substitute_yaml "$2" cassette "$1"
+	extension="${1##*.}"
+	extension=${extension,,}
+	if [[ "$extension" != "cas" ]] ; then exit 1;
 
-	TODO # look the type of the cassette (BAS/BIN) and issue the command CLOAD/CLOADM
+	inferred_setup_cassette=$(basename `$1`)
+
+	PENDING (1)
+
+	#inferred_setup_command="CLOAD"
+	#inferred_setup_command="CLOADM"
 }
 
-function infer_ccc() { # file.dsk outfile.autococo
-	substitute_yaml "$2" rompack "$1"
-	TODO # test
+function infer_ccc() { # file.ccc outfile.autococo
+	extension="${1##*.}"
+	extension=${extension,,}
+	if [[ "$extension" != "ccc" ]] ; then exit 1;
+
+	inferred_setup_rompack=$(basename `$1`)
+	inferred_setup_autorun=yes
 }

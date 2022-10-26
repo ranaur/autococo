@@ -86,3 +86,10 @@ TEXT=yex/no text version
 PORT=COCO/ZXSPECTRUM
 
 
+# TODO
+
+1) Infer command from a CAS if it has a BIN or BAS program
+2) Infer command from a DSK 
+3) # infer the command, inspecting the disk content
+	# if there is a RUN.BAS / AUTOEXEC , run it.
+	# If there is X.BIN & X.BAS run the BAS

@@ -38,3 +38,38 @@ function substitute_yaml() {
 	fi
 }
 
+function save_yaml_() {
+	PREFIX="$1"
+	FILE="$2"
+	VAR="${3}[@]"
+	IN=${4:-0}
+
+	if (( $IN == 0 )) ; then
+		INDENT=""
+	else
+		INDENT=`for i in {1..$4}; do echo -n "  "; done`
+	fi
+
+	for item in "${!VAR}" ; do
+		if [[ -z "${!item}" ]] ; then
+			echo "$INDENT${item#"$PREFIX"_}:" >> "$FILE"
+			echo $(save_yaml_ "$PREFIX_$item" "$FILE" "$item"_ $((1+IN)))
+		else
+			echo "$INDENT${item#"$PREFIX"_}:'${!item}'" >> "$FILE"
+		fi
+		##echo "save_yaml_ \"$PREFIX_$item\" \"$FILE\" \"$item\"_ $((1+$IN))"
+	done
+}
+
+# save_yaml => prefix file +> save all variables from YAML file to a YAML file. Opposite from parse_yaml
+function save_yaml() {
+	PREFIX="$1"
+	FILE="$2"
+
+	cat < /dev/null > "$FILE"
+
+	#export ${!$PREFIX_@}
+	save_yaml_ "$PREFIX" "$FILE" "${PREFIX}__"
+}
+
+export -f save_yaml_
