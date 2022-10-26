@@ -1,4 +1,5 @@
 DECB=`which decb`
+if (( $? == 1 )) ; then exit -1; fi # decb not found
 
 function decb() {
         # floptool.exe flopdir input_format filesystem

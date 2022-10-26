@@ -315,7 +315,7 @@ function infer_guess_dsk_command() { # file.dsk
 #command: RUN"$FIRST_BAS"
 #__EOF__
 #	fi
-PENDING (3)
+	PENDING # (3)
 	# infer the command, inspecting the disk content
 	# if there is a RUN.BAS / AUTOEXEC , run it.
 	# If there is X.BIN & X.BAS run the BAS
@@ -336,7 +336,7 @@ function infer_zip() { # file.zip outfile.autococo
 	i=0
 	for element in "${original_dsks[@]}"
 	do
-#echo ELEMENT $element
+#echo ELEMENT 0$element
 		if [[ "$element" =~ "BOOT.DSK" ]] ; then
 #echo MATCH
 			unset original_dsks[$i]
@@ -362,13 +362,13 @@ function infer_zip() { # file.zip outfile.autococo
 function infer_dsk() { # file.dsk outfile.autococo [number = 0]
 	extension="${1##*.}"
 	extension=${extension,,}
-	if [[ "$extension" != "cas" ]] ; then exit 1;
+	if [[ "$extension" != "cas" ]] ; then exit 1; fi
 
 	number=${3:-0}
 	
 	declare "inferred_setup_floppy$number=$(basename `$1`)"
 	
-	if (( $number == 0 )) then 
+	if (( $number == 0 )) ; then 
 		if [ $inferred_setup_os9 == yes ] ; then
 			inferred_setup_command=DOS
 		else
@@ -380,11 +380,11 @@ function infer_dsk() { # file.dsk outfile.autococo [number = 0]
 function infer_cas() { # file.dsk outfile.autococo
 	extension="${1##*.}"
 	extension=${extension,,}
-	if [[ "$extension" != "cas" ]] ; then exit 1;
+	if [[ "$extension" != "cas" ]] ; then exit 1; fi
 
 	inferred_setup_cassette=$(basename `$1`)
 
-	PENDING (1)
+	PENDING # (1)
 
 	#inferred_setup_command="CLOAD"
 	#inferred_setup_command="CLOADM"
@@ -393,7 +393,7 @@ function infer_cas() { # file.dsk outfile.autococo
 function infer_ccc() { # file.ccc outfile.autococo
 	extension="${1##*.}"
 	extension=${extension,,}
-	if [[ "$extension" != "ccc" ]] ; then exit 1;
+	if [[ "$extension" != "ccc" ]] && [[ "$extension" != "rom" ]] ; then exit 1; fi
 
 	inferred_setup_rompack=$(basename `$1`)
 	inferred_setup_autorun=yes

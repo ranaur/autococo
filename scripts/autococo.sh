@@ -6,9 +6,9 @@ if [ -f ~/.autococo ] ; then source ~/.autococo ; fi
 if [ -d "$WORKDIR" ] ; then rm -rf "$WORKDIR" ; fi
 if [ ! -d "$WORKDIR" ] ; then mkdir -p "$WORKDIR" ; fi
 
+source "$SCRIPTDIR/yaml.sh"
 source "$SCRIPTDIR/database.sh"
 source "$SCRIPTDIR/util.sh"
-source "$SCRIPTDIR/yaml.sh"
 source "$SCRIPTDIR/zip.sh"
 source "$SCRIPTDIR/dsk.sh"
 source "$SCRIPTDIR/autococo.infer.sh"

@@ -84,6 +84,7 @@ function database_set() {
 	OUTDIR=`dirname "$OUTFILE"`
 
 	mkdir -p "$OUTDIR"
+
 	cp "$FILE" "$OUTFILE"
 
 	return $?

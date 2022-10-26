@@ -1,0 +1,114 @@
+#!/bin/bash
+
+AUTOCOCODIR=$(realpath "$0")
+AUTOCOCODIR=$(dirname "$AUTOCOCODIR")
+SCRIPTDIR="$AUTOCOCODIR/scripts"
+
+source "$SCRIPTDIR/autococo.sh"
+
+function call_emulator() {
+	if [ ! -x "$SCRIPTDIR/emulator.$EMULATOR.sh" ] ; then
+		error emulator $EMULATOR does not exist!
+		return -1
+	fi
+
+	. "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+}
+
+function cmd_infer() { # dsk/zip/cas file
+	SAVE=false
+	if [ "$1" == "-s" ] ; then
+		SAVE=true
+		shift
+	fi
+
+	EXT="${1##*.}"
+	filename=`basename "$1"`
+	#OUT="${filename%.*}.autococo"
+	OUT="$2"
+	
+	infer_cocoarchive "$1"
+	case ${EXT,,} in
+	zip)
+		infer_zip "$1" "$OUT"
+		;;
+	dsk)
+		infer_dsk "$1" "$OUT"
+		;;
+	cas)
+		infer_cas "$1" "$OUT"
+		;;
+	rom | ccc)
+		infer_ccc "$1" "$OUT"
+		;;
+	*)
+		echo Cannot infer for extension $EXT
+		return -1
+	esac
+	return $?
+}
+
+function cmd_run() { # autococo.file dsk/zip/cas file
+	echo cmd_run[$#] "$@"
+	if [ $# -ne 2 ] ; then 
+		cat << __HELP__
+usage: $0 run file autococo
+
+Runs file using autococo as configuration. File can be a .ZIP, .DSK, .CAS or .CCC
+
+__HELP__
+		return -1;
+	fi
+	
+	autococo_load "$2"
+
+	FILETYPE=${1##*.}
+	case ${FILETYPE,,} in
+	zip)
+	  WORKDIR="$WORKDIR/run"
+	  unzip_at "$1" "$WORKDIR"
+	  ;;
+	dsk)
+	  FLOPPY0="$1"
+	  WORKDIR=`dirname "$1"`
+	  ;;
+	cas)
+	  CASSETTE="$1"
+	  WORKDIR=`dirname "$1"`
+	  ;;
+	ccc)
+	  rompack="$1"
+	  WORKDIR=`dirname "$1"`
+	  ;;
+	*)
+	  echo NOT IMPLEMENTED
+	  exit -1
+	  ;;
+	esac
+
+	call_emulator
+}
+
+case "$1" in
+  run)
+    shift
+    cmd_run "$@"
+    exit $?
+    ;;
+  infer)
+    shift
+    cmd_infer "$@"
+    exit $?
+    ;;
+  *)
+    cat << __HELP__
+usage: $0 command parameters ...
+
+where command is:
+  infer _file_ = infer the AUTOCOCO from file
+  run _autococo_file_ _file_ = execute the file in the emulator using autococo as configuration
+
+__HELP__
+    exit -1
+    ;;
+esac
