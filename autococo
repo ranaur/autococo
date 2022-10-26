@@ -27,24 +27,32 @@ function cmd_infer() { # dsk/zip/cas file
 	#OUT="${filename%.*}.autococo"
 	OUT="$2"
 	
-	infer_cocoarchive "$1"
+	inferred__=(inferred_package inferred_setup)
+	inferred_package_=()
+	inferred_setup_=()
+	infer_archive_cocoarchive "$1"
+
 	case ${EXT,,} in
 	zip)
-		infer_zip "$1" "$OUT"
+		infer_zip "$1"
 		;;
 	dsk)
-		infer_dsk "$1" "$OUT"
+		infer_dsk "$1"
 		;;
 	cas)
-		infer_cas "$1" "$OUT"
+		infer_cas "$1"
 		;;
 	rom | ccc)
-		infer_ccc "$1" "$OUT"
+		infer_ccc "$1"
 		;;
 	*)
 		echo Cannot infer for extension $EXT
 		return -1
 	esac
+
+	echo VARIABLES[]: ${!inferred_@}
+	save_yaml inferred "$OUT"
+
 	return $?
 }
 

@@ -30,9 +30,13 @@ function dsk_dir() { # file [-BB = show only BIN and BAS files]
 	if [ ! -z "$2" ] && [ ${2:0:1} != '-' ] ; then
 		files=$(echo "$files" | grep "$2")
 	fi
-#echo $files
 
-	while read -r file
+	nfiles=$(echo "$files" | wc -w)
+#echo nfiles: \"$nfiles\"
+	if (( "$nfiles" == 0 )) ; then return 0; fi
+#echo files: \"$files\"
+
+	while read -r files
 	do
 		filename=${file%% *}
 		file=${file:${#filename}}

@@ -19,7 +19,6 @@
 #   inferred_setup_tv_type:
 #   inferred_setup_cocovga:
 #   inferred_setup_cocopsg:
-
 # CCC
 #   inferred_setup_rompack: <file>
 
@@ -37,11 +36,11 @@ function infer_archive_cocoarchive() {
 	DIRNAME=$(dirname "$FULLFILEPATH")
 	inferred_package_genre=$(basename "$DIRNAME")
 
-	inferred_package_filename=`basename "$1"`
+	inferred_package_file=`basename "$1"`
 	inferred_package_md5=$(md5sum "$FULLFILEPATH" | cut -b -32)
 
 		# remove extension (.zip)
-	PROGRAM="${inferred_package_filename%.*}"
+	PROGRAM="${inferred_package_file%.*}"
 	inferred_setup_architecture=coco2
 	if has_substring "$PROGRAM" "(Coco 3)" ; then
 		inferred_setup_architecture=coco3
@@ -225,6 +224,25 @@ function infer_archive_cocoarchive() {
 	inferred_package_url="${FILE#*../Color Computer Archive/}"
 	inferred_package_url="https://colorcomputerarchive.com/repo/${inferred_package_url}"
 
+	inferred_package_+=(inferred_package_genre)
+	inferred_package_+=(inferred_package_author)
+	inferred_package_+=(inferred_package_file)
+	inferred_package_+=(inferred_package_language)
+	inferred_package_+=(inferred_package_md5)
+	inferred_package_+=(inferred_package_program)
+	inferred_package_+=(inferred_package_url)
+
+	inferred_setup_+=(inferred_setup_architecture)
+	inferred_setup_+=(inferred_setup_artifact)
+	inferred_setup_+=(inferred_setup_cpu)
+	inferred_setup_+=(inferred_setup_os9)
+	inferred_setup_+=(inferred_setup_ssc)
+	inferred_setup_+=(inferred_setup_rtr)
+	inferred_setup_+=(inferred_setup_tv_type)
+	inferred_setup_+=(inferred_setup_cocovga)
+	inferred_setup_+=(inferred_setup_cocopsg)
+
+
 # extract zip file
 #mkdir -p "$TMP"
 #unzip -d "$TMP" "$FILE" > /dev/null
@@ -236,36 +254,36 @@ function infer_archive_cocoarchive() {
 #METAFILE="METAFILE.YML"
 
 #echo PROGRAM $PROGRAM
-cat << __EOF__
-package:
-  program: $inferred_package_program
-  author: $inferred_package_author
-  genre: $inferred_package_genre
-  file: $inferred_package_file
-  url: $inferred_package_url
-  md5: $inferred_package_md5
-  language: $inferred_package_language
-  tags: "$TRANSLATION $TEXT $CHEAT $PORT $ALT $SIXXIE"
-setup:
-  architecture: $inferred_setup_architecture
-  cpu: $inferred_setup_cpu
-  tv_type: $inferred_setup_tv_type
-  artifact: no
-  os9: $inferred_setup_os9
-  ssc: $inferred_setup_ssc
-  real_talk: $inferred_setup_rtr
-  cocovga: $inferred_setup_cocovga
-__EOF__
-
-	echo VARIABLES[]: ${!inferred_@}
+#cat << __EOF__
+#package:
+# program: $inferred_package_program
+# author: $inferred_package_author
+# genre: $inferred_package_genre
+# file: $inferred_package_file
+# url: $inferred_package_url
+# md5: $inferred_package_md5
+# language: $inferred_package_language
+# tags: "$TRANSLATION $TEXT $CHEAT $PORT $ALT $SIXXIE"
+#setup:
+# architecture: $inferred_setup_architecture
+# cpu: $inferred_setup_cpu
+# tv_type: $inferred_setup_tv_type
+# artifact: no
+# os9: $inferred_setup_os9
+# ssc: $inferred_setup_ssc
+# real_talk: $inferred_setup_rtr
+# cocovga: $inferred_setup_cocovga
+#__EOF__
 }
 
 function infer_guess_dsk_command() { # file.dsk
-#echo guess_dsk "$@"
+#echo infer_guess_dsk_command "$@" >&2
 	# return 0 of could guess, -1 if not
 	# outputs: $command => command to load the disk
-	dsk_dir "$1" -BB
+	dsk_dir "$1" -BB >&2
+
 	nfiles=${#dir[@]}
+echo NFILES = $nfiles >&2
 	if [ $nfiles == 0 ] ; then
 		# no files or error on decb, probably a OS-9 disk
 		command="DOS"
@@ -289,13 +307,17 @@ function infer_guess_dsk_command() { # file.dsk
 			;;
 		*)
 			command=""
-			echo cannot infer: only one file that is not BAS nor BIN
+			echo cannot infer: only one file that is not BAS nor BIN >&2
 			return -1
 			;;
 		esac
 	fi
 
-	echo PENDING: more than one file that is not BAS nor BIN
+	PENDING # (3)
+	# infer the command, inspecting the disk content
+	# if there is a RUN.BAS / AUTOEXEC , run it.
+	# If there is X.BIN & X.BAS run the BAS
+	echo PENDING: more than one file that is not BAS nor BIN >&2
 	return -1
 
 	#>&2 echo "createCommand" "$@"
@@ -315,10 +337,6 @@ function infer_guess_dsk_command() { # file.dsk
 #command: RUN"$FIRST_BAS"
 #__EOF__
 #	fi
-	PENDING # (3)
-	# infer the command, inspecting the disk content
-	# if there is a RUN.BAS / AUTOEXEC , run it.
-	# If there is X.BIN & X.BAS run the BAS
 }
 
 function infer_zip() { # file.zip outfile.autococo
@@ -334,9 +352,10 @@ function infer_zip() { # file.zip outfile.autococo
 	original_dsks=(*.DSK)
 	dsks=()
 	i=0
+
 	for element in "${original_dsks[@]}"
 	do
-#echo ELEMENT 0$element
+#echo ELEMENT $element
 		if [[ "$element" =~ "BOOT.DSK" ]] ; then
 #echo MATCH
 			unset original_dsks[$i]
@@ -350,31 +369,42 @@ function infer_zip() { # file.zip outfile.autococo
 
 	i=0
 	for disk in ${dsks[@]} ; do
+#echo DISK $element
 		infer_dsk $(basename "$disk") $i
 		i=$(($i+1))
 	done
 	popd > /dev/null
 
+echo floppy: ${inferred_setup_floppy0}
+
+
+#echo VARIABLES[]: ${!inferred_@}
 	#rm -rf "$WORKDIR"
 	return 0
 }
 
-function infer_dsk() { # file.dsk outfile.autococo [number = 0]
+function infer_dsk() { # file.dsk [number = 0]
+#echo infer_dsk "$@"
 	extension="${1##*.}"
 	extension=${extension,,}
-	if [[ "$extension" != "cas" ]] ; then exit 1; fi
+	if [[ "$extension" != "dsk" ]] ; then exit 1; fi
 
-	number=${3:-0}
-	
-	declare "inferred_setup_floppy$number=$(basename `$1`)"
-	
+	number=${2:-0}
+	declare -g "inferred_setup_floppy$number=$(basename \"$1\")"
+
+	inferred_setup_+=(inferred_setup_floppy$number)
+
 	if (( $number == 0 )) ; then 
 		if [ $inferred_setup_os9 == yes ] ; then
 			inferred_setup_command=DOS
 		else
 			inferred_setup_command=`infer_guess_dsk_command "$disk"`
+echo $inferred_setup_command
 		fi
 	fi
+	inferred_setup_+=(inferred_setup_command)
+
+	return 0
 }
 
 function infer_cas() { # file.dsk outfile.autococo
@@ -387,7 +417,10 @@ function infer_cas() { # file.dsk outfile.autococo
 	PENDING # (1)
 
 	#inferred_setup_command="CLOAD"
-	#inferred_setup_command="CLOADM"
+	inferred_setup_command="CLOADM"
+	inferred_setup_+=(inferred_setup_command)
+
+	return 0
 }
 
 function infer_ccc() { # file.ccc outfile.autococo
@@ -397,4 +430,7 @@ function infer_ccc() { # file.ccc outfile.autococo
 
 	inferred_setup_rompack=$(basename `$1`)
 	inferred_setup_autorun=yes
+	inferred_setup_+=(inferred_setup_rompack inferred_setup_autorun)
+
+	return 0
 }
