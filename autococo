@@ -35,6 +35,7 @@ function cmd_infer() { # dsk/zip/cas file
 	case ${EXT,,} in
 	zip)
 		infer_zip "$1"
+#echo RET: $? "$1"
 		;;
 	dsk)
 		infer_dsk "$1"
@@ -50,14 +51,14 @@ function cmd_infer() { # dsk/zip/cas file
 		return -1
 	esac
 
-	echo VARIABLES[]: ${!inferred_@}
+#echo VARIABLES[]: ${!inferred_@}
 	save_yaml inferred "$OUT"
 
 	return $?
 }
 
 function cmd_run() { # autococo.file dsk/zip/cas file
-	echo cmd_run[$#] "$@"
+#echo cmd_run[$#] "$@"
 	if [ $# -ne 2 ] ; then 
 		cat << __HELP__
 usage: $0 run file autococo

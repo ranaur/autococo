@@ -39,7 +39,7 @@ function substitute_yaml() {
 }
 
 function save_yaml_() {
-echo save_yaml_ "$@"
+#echo save_yaml_ "$@"
 	PREFIX="$1"
 	FILE="$2"
 	VAR="${3}[@]"
@@ -54,7 +54,7 @@ echo save_yaml_ "$@"
 	for item in "${!VAR}" ; do
 		if [[ -z "${!item}" ]] ; then
 			echo "$INDENT${item#"$PREFIX"_}:" >> "$FILE"
-			echo $(save_yaml_ "$PREFIX_$item" "$FILE" "$item"_ $((1+IN)))
+			echo $(save_yaml_ "$PREFIX_$item" "$FILE" "$item"_ $((1+IN))) > /dev/null
 		else
 			echo "$INDENT${item#"$PREFIX"_}: ${!item}" >> "$FILE"
 		fi

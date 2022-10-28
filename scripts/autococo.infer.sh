@@ -5,6 +5,8 @@
 #	inferred_package_genre:
 #   inferred_package_language:
 #   inferred_package_md5:
+#   inferred_package_year:
+#   inferred_package_reference:
 #   inferred_package_program:
 #   inferred_package_url:
 # inferred_setup_
@@ -31,6 +33,7 @@ function has_substring() {
 #   Currently only works with ZIP file from Disks directory
 #
 function infer_archive_cocoarchive() {
+#echo FILE: "$1" >&2
 	FULLFILEPATH=$(realpath "$1")
 
 	DIRNAME=$(dirname "$FULLFILEPATH")
@@ -134,7 +137,7 @@ function infer_archive_cocoarchive() {
 		inferred_setup_cocopsg=yes
 		PROGRAM="${PROGRAM// (CoCo PSG)/}"
 	else
-		inferred_setup_cocopsg=yes
+		inferred_setup_cocopsg=no
 	fi
 	if has_substring "$PROGRAM" "(Enhanced by sixxie)" ; then
 		SIXXIE=yes
@@ -203,21 +206,40 @@ function infer_archive_cocoarchive() {
 	if [ -z "$inferred_package_author" ] ; then
 		inferred_package_author="Unknown"
 	fi
+	# It is not the author, it's the year!
+	if [[ "$inferred_package_author" =~ [0-9][0-9][0-9][0-9] ]] ; then
+		inferred_package_year=$inferred_package_author
+		PROGRAM="${PROGRAM// ($inferred_package_year)/}"
+#echo "   YEAR: $inferred_package_year" >&2
+
+		# It is not the author, it's the reference!
+		inferred_package_author="${PROGRAM#* (}"
+		inferred_package_author="${inferred_package_author%%)*}"
+		if [[ "$inferred_package_author" =~ [0-9][0-9]-[0-9][0-9][0-9][0-9] ]] ; then
+			inferred_package_reference=$inferred_package_author
+			PROGRAM="${PROGRAM// ($inferred_package_reference)/}"
+
+#echo "   REFERENCE: $inferred_package_reference" >&2
+			inferred_package_author="${PROGRAM#* (}"
+			inferred_package_author="${inferred_package_author%%)*}"
+		fi
+	fi
+#echo "   AUTHOR: $inferred_package_author" >&2
 	inferred_package_program="${PROGRAM% (*}"
 
 	GROUPDIRNAME=$(dirname "$DIRNAME")
-	echo GROUP: $(basename "$GROUPDIRNAME")
+#echo GROUP: $(basename "$GROUPDIRNAME")
 	MACROGROUPDIRNAME=$(dirname "$GROUPDIRNAME")
-	echo MACROGROUP: $(basename "$MACROGROUPDIRNAME")
+#echo MACROGROUP: $(basename "$MACROGROUPDIRNAME")
 	if [ -z "$2" ] ; then
 		CATEGORY=`basename "$DIR"`
-	echo CATEGORY: $CATEGORY
+#echo CATEGORY: $CATEGORY
 	else
 		SUBCATEGORY=`basename "$DIR"`
 		CATEGORY=`dirname "$DIR"`
 		CATEGORY=`basename "$CATEGORY"`
-	echo CATEGORY: $CATEGORY
-	echo SUBCATEGORY: $SUBCATEGORY
+#echo CATEGORY: $CATEGORY
+#echo SUBCATEGORY: $SUBCATEGORY
 	fi
 
 	TMP=/tmp/ez
@@ -229,65 +251,44 @@ function infer_archive_cocoarchive() {
 	inferred_package_+=(inferred_package_file)
 	inferred_package_+=(inferred_package_language)
 	inferred_package_+=(inferred_package_md5)
+	[[ ! -z "$inferred_package_year" ]] && inferred_package_+=(inferred_package_year)
+	[[ ! -z "$inferred_package_reference" ]] && inferred_package_+=(inferred_package_reference)
 	inferred_package_+=(inferred_package_program)
 	inferred_package_+=(inferred_package_url)
 
 	inferred_setup_+=(inferred_setup_architecture)
 	inferred_setup_+=(inferred_setup_artifact)
-	inferred_setup_+=(inferred_setup_cpu)
-	inferred_setup_+=(inferred_setup_os9)
-	inferred_setup_+=(inferred_setup_ssc)
-	inferred_setup_+=(inferred_setup_rtr)
+	[[ "$inferred_setup_cpu" != 6809 ]] && inferred_setup_+=(inferred_setup_cpu)
+	[[ "$inferred_setup_os9" != no ]] && inferred_setup_+=(inferred_setup_os9)
+	[[ "$inferred_setup_ssc" != no ]] && inferred_setup_+=(inferred_setup_ssc)
+	[[ "$inferred_setup_rtr" != no ]] && inferred_setup_+=(inferred_setup_rtr)
 	inferred_setup_+=(inferred_setup_tv_type)
-	inferred_setup_+=(inferred_setup_cocovga)
-	inferred_setup_+=(inferred_setup_cocopsg)
-
-
-# extract zip file
-#mkdir -p "$TMP"
-#unzip -d "$TMP" "$FILE" > /dev/null
-#mv "$TMP/${FILENAME%.*}"/* "${PROGRAM_DIR}/"
-#rm -R "$TMP"
-#
-#
-#pushd "$PROGRAM_DIR" > /dev/null
-#METAFILE="METAFILE.YML"
-
-#echo PROGRAM $PROGRAM
-#cat << __EOF__
-#package:
-# program: $inferred_package_program
-# author: $inferred_package_author
-# genre: $inferred_package_genre
-# file: $inferred_package_file
-# url: $inferred_package_url
-# md5: $inferred_package_md5
-# language: $inferred_package_language
-# tags: "$TRANSLATION $TEXT $CHEAT $PORT $ALT $SIXXIE"
-#setup:
-# architecture: $inferred_setup_architecture
-# cpu: $inferred_setup_cpu
-# tv_type: $inferred_setup_tv_type
-# artifact: no
-# os9: $inferred_setup_os9
-# ssc: $inferred_setup_ssc
-# real_talk: $inferred_setup_rtr
-# cocovga: $inferred_setup_cocovga
-#__EOF__
+	[[ "$inferred_setup_cocovga" != no ]] && inferred_setup_+=(inferred_setup_cocovga)
+	[[ "$inferred_setup_cocopsg" != no ]] && inferred_setup_+=(inferred_setup_cocopsg)
 }
 
 function infer_guess_dsk_command() { # file.dsk
 #echo infer_guess_dsk_command "$@" >&2
 	# return 0 of could guess, -1 if not
 	# outputs: $command => command to load the disk
+
+	# check if it is a OS-9/DOS disk
+	dsk_load "$1"
+	if [[ $dsk_format != "DECB" ]] ; then
+		echo "DOS"
+		return 0
+	fi
+
+	# PENDING - use direct acccess on disk and not DECB
 	dsk_dir "$1" -BB >&2
 
 	nfiles=${#dir[@]}
-echo NFILES = $nfiles >&2
+#echo NFILES = $nfiles >&2
+#echo DIR: ${dir[@]} >&2
+	# Empty disk
 	if [ $nfiles == 0 ] ; then
-		# no files or error on decb, probably a OS-9 disk
-		command="DOS"
-		return 0
+		echo "PRINT\"EMPTY DiSK?\""
+		return -1
 	fi
 
 	if [ $nfiles == 1 ] ; then
@@ -307,7 +308,7 @@ echo NFILES = $nfiles >&2
 			;;
 		*)
 			command=""
-			echo cannot infer: only one file that is not BAS nor BIN >&2
+			echo cannot infer: only one file that is not BAS nor BIN\($ext\)  >&2
 			return -1
 			;;
 		esac
@@ -343,12 +344,14 @@ function infer_zip() { # file.zip outfile.autococo
 #echo infer_zip "$@"
 	WORKDIR="$WORKDIR/infer"
 #echo WORKDIR "$WORKDIR"
+echo "FILE: $1"
 	unzip_at "$1" "$WORKDIR"
 
 	pushd "$WORKDIR" > /dev/null
 
 	# get all the DSKs files and sort the *BOOT.DSK first, then alphabetically.
 	shopt -s nocaseglob
+	shopt -s nullglob
 	original_dsks=(*.DSK)
 	dsks=()
 	i=0
@@ -366,17 +369,18 @@ function infer_zip() { # file.zip outfile.autococo
 	IFS=$'\n' original_dsks=($(sort <<<"${original_dsks[*]}"))
 	unset IFS
 	dsks+=(${original_dsks[@]})
-
 	i=0
 	for disk in ${dsks[@]} ; do
-#echo DISK $element
+#echo DISK $(basename "$disk") $i
 		infer_dsk $(basename "$disk") $i
 		i=$(($i+1))
 	done
 	popd > /dev/null
+if [[ $i != 1 ]] ; then
+  echo "  *** MORE THAN ONE DISK"
+fi
 
-echo floppy: ${inferred_setup_floppy0}
-
+#echo floppy: ${inferred_setup_floppy0}
 
 #echo VARIABLES[]: ${!inferred_@}
 	#rm -rf "$WORKDIR"
@@ -395,14 +399,12 @@ function infer_dsk() { # file.dsk [number = 0]
 	inferred_setup_+=(inferred_setup_floppy$number)
 
 	if (( $number == 0 )) ; then 
-		if [ $inferred_setup_os9 == yes ] ; then
-			inferred_setup_command=DOS
-		else
-			inferred_setup_command=`infer_guess_dsk_command "$disk"`
-echo $inferred_setup_command
+		inferred_setup_command=`infer_guess_dsk_command "$disk"`
+		if [[ $? != 0 ]] ; then
+			echo "  *** CANNOT GUESS DSK COMMAND"
 		fi
+		inferred_setup_+=(inferred_setup_command)
 	fi
-	inferred_setup_+=(inferred_setup_command)
 
 	return 0
 }
@@ -425,10 +427,10 @@ function infer_cas() { # file.dsk outfile.autococo
 
 function infer_ccc() { # file.ccc outfile.autococo
 	extension="${1##*.}"
-	extension=${extension,,}
+	extension="${extension,,}"
 	if [[ "$extension" != "ccc" ]] && [[ "$extension" != "rom" ]] ; then exit 1; fi
 
-	inferred_setup_rompack=$(basename `$1`)
+	inferred_setup_rompack=$(basename "$1")
 	inferred_setup_autorun=yes
 	inferred_setup_+=(inferred_setup_rompack inferred_setup_autorun)
 
