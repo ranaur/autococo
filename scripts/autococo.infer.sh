@@ -3,24 +3,25 @@
 #   inferred_package_author:
 #   inferred_package_file:
 #	inferred_package_genre:
-#   inferred_package_language:
+#   inferred_package_language: English ...
 #   inferred_package_md5:
 #   inferred_package_year:
 #   inferred_package_reference:
 #   inferred_package_program:
 #   inferred_package_url:
 # inferred_setup_
-#   inferred_setup_architecture:
-#   inferred_setup_artifact
-#   inferred_setup_command
-#   inferred_setup_cpu:
+#   inferred_setup_architecture: coco2 coco1 coco3
+#   inferred_setup_artifact: no red blue
+#   inferred_setup_command:
+#   inferred_setup_cpu: 6809 6309
 #   inferred_setup_floppy0
-#   inferred_setup_os9:
-#   inferred_setup_ssc:
-#   inferred_setup_rtr:
-#   inferred_setup_tv_type:
-#   inferred_setup_cocovga:
-#   inferred_setup_cocopsg:
+#   inferred_setup_dos: decb os9
+#   inferred_setup_ssc: no required optional
+#   inferred_setup_rtr: no required optional
+#   inferred_setup_graphics:
+#   inferred_setup_tv_type: ntsc pal pal50
+#   inferred_setup_cocovga: no required
+#   inferred_setup_cocopsg: no required
 # CCC
 #   inferred_setup_rompack: <file>
 
@@ -29,203 +30,147 @@ function has_substring() {
         [[ "$1" == *"$2"* ]]
 }
 
+
 # infer package details from a cocoarchive file
 #   Currently only works with ZIP file from Disks directory
 #
 function infer_archive_cocoarchive() {
 #echo FILE: "$1" >&2
+	tags=()
+	function has_tag() { # tag := returns 0 if there is the tag -1 otherwise
+		[[ ":${tags[*]}:" =~ ":$1:" ]]
+		return $?
+	}
+	function del_tag() { # tag
+		#tags=(${tags[@]/$1})
+		newtag=()
+		for t in "${tags[@]}" ; do
+			if [[ "$t" != "$1" ]] ; then
+				newtag+=("$t")
+			fi
+		done
+		tags=(${newtag[@]})
+
+	}
+	function has_del_tag() { # tag => returns of the tag exist, and removes it
+		has_tag "$1"
+		res=$?
+		if [[ $res == 0 ]] ; then
+			del_tag "$1"
+		fi
+		return $res
+	}
 	FULLFILEPATH=$(realpath "$1")
 
 	DIRNAME=$(dirname "$FULLFILEPATH")
+	inferred_package_+=(inferred_package_program)
+		# will be guessed down below
+	inferred_package_author=Unknown
+		# will be guessed down below
+	inferred_package_+=(inferred_package_author)
+
+
 	inferred_package_genre=$(basename "$DIRNAME")
+	inferred_package_+=(inferred_package_genre)
 
 	inferred_package_file=`basename "$1"`
+	inferred_package_+=(inferred_package_file)
+
 	inferred_package_md5=$(md5sum "$FULLFILEPATH" | cut -b -32)
+	inferred_package_+=(inferred_package_md5)
 
-		# remove extension (.zip)
-	PROGRAM="${inferred_package_file%.*}"
+	inferred_package_program="${inferred_package_file%.*}"
+	inferred_package_program="${inferred_package_program%% (*}"
+
+	inferred_package_url="${FULLFILEPATH#*colorcomputerarchive.com/repo/}"
+	inferred_package_url="https://colorcomputerarchive.com/repo/${inferred_package_url}"
+	inferred_package_+=(inferred_package_url)
+
+		# tags
+	TAGS="${inferred_package_file#*(}"
+	TAGS="${TAGS%.*}"
+	 
+	IFS=":"
+	TAGLINE=$(echo "${TAGS}" | sed -e 's/(//g' -e 's/) /:/g' -e 's/)$//')
+	read -a tags < <(echo "$TAGLINE")
+#echo TAGS ORIGINAL ${#tags[@]}="(${tags[@]})"
 	inferred_setup_architecture=coco2
-	if has_substring "$PROGRAM" "(Coco 3)" ; then
-		inferred_setup_architecture=coco3
-		PROGRAM="${PROGRAM// (Coco 3)/}"
-	fi
-	if has_substring "$PROGRAM" "(Coco 1-2)" ; then
-		inferred_setup_architecture=coco1
-		PROGRAM="${PROGRAM// (Coco 1-2)/}"
-	fi
+	inferred_setup_+=(inferred_setup_architecture)
+	has_del_tag "Coco 3" && inferred_setup_architecture=coco3
+	has_del_tag "Coco 3 patch" && inferred_setup_architecture=coco3
+	has_del_tag "Coco 3 enhancements" && inferred_setup_architecture=coco3
+	has_del_tag "coco 3" && inferred_setup_architecture=coco3
+	has_del_tag "Coco 1-2" && inferred_setup_architecture=coco1
+#echo TAGS ${#tags[@]}="(${tags[@]})"
 
-	if has_substring "$PROGRAM" "(SSC)" ; then
-		inferred_setup_ssc=yes
-		PROGRAM="${PROGRAM// (SSC)/}"
-	else
-		inferred_setup_ssc=no
-	fi
+	has_del_tag "SSC" && inferred_setup_ssc=required && inferred_setup_+=(inferred_setup_ssc)
+	has_del_tag "Real Talker required" && inferred_setup_rtr=required && inferred_setup_+=(inferred_setup_rtr)
+	has_del_tag "CocoVGA" && inferred_setup_cocovga=required && inferred_setup_+=(inferred_setup_cocovga)
+	has_del_tag "CoCo PSG" && inferred_setup_cocopsg=required && inferred_setup_+=(inferred_setup_cocovga)
 
-	if has_substring "$PROGRAM" "(Real Talker required)" ; then
-		inferred_setup_rtr=yes
-		PROGRAM="${PROGRAM// (Real Talker required)/}"
-	else
-		inferred_setup_rtr=no
-	fi
+	has_del_tag "PAL" && inferred_setup_tv_type=pal && inferred_setup_+=(inferred_setup_tv_type)
+	has_del_tag "PAL 50Hz Coco 2" && inferred_setup_tv_type=pal50 && inferred_setup_+=(inferred_setup_tv_type) && inferred_setup_architecture=coco2
+	has_del_tag "50hz" && inferred_setup_tv_type=pal50 && inferred_setup_+=(inferred_setup_tv_type) && inferred_setup_architecture=coco2
+	has_del_tag "NTSC" && inferred_setup_tv_type=ntsc && inferred_setup_+=(inferred_setup_tv_type)
 
-	VIDEO_FORMAT=NTSC
-	if has_substring "$PROGRAM" "(PAL)" ; then
-		VIDEO_FORMAT=PAL
-		PROGRAM="${PROGRAM// (PAL)/}"
-	fi
-	if has_substring "$PROGRAM" "(PAL 50Hz Coco 2)" ; then
-		VIDEO_FORMAT=PAL50Hz
-		PROGRAM="${PROGRAM// (PAL 50Hz Coco 2)/}"
-	fi
-	PROGRAM="${PROGRAM// (NTSC)/}"
-	inferred_setup_tv_type=${VIDEO_FORMAT,,}
-
-	if has_substring "$PROGRAM" "(OS-9)" ; then
-		inferred_setup_os9=yes
-		PROGRAM="${PROGRAM// (OS-9)/}"
-	else
-		inferred_setup_os9=no
-	fi
+	has_del_tag "OS-9" && inferred_setup_dos=os9 && inferred_setup_+=(inferred_setup_dos)
+	has_del_tag "RS-DOS" && inferred_setup_dos=rsdos && inferred_setup_+=(inferred_setup_dos)
 
 	inferred_setup_cpu=6809
-	if has_substring "$PROGRAM" "(6309 optimized)" ; then
-		inferred_setup_cpu=6309
-		PROGRAM="${PROGRAM// (6309 optimized)/}"
+	has_del_tag "6309" && inferred_setup_cpu=6309 && inferred_setup_+=(inferred_setup_cpu)
+	has_del_tag "6309 optimized" && inferred_setup_cpu=6309 && inferred_setup_+=(inferred_setup_cpu)
+	has_del_tag "6309 compatible" && inferred_setup_cpu=6309 && inferred_setup_+=(inferred_setup_cpu)
+	has_del_tag "6809 optimized" && inferred_setup_cpu=6809 && inferred_setup_+=(inferred_setup_cpu)
 
-	fi
-	if has_substring "$PROGRAM" "(6309 compatible)" ; then
-		inferred_setup_cpu=6309
-		PROGRAM="${PROGRAM// (6309 compatible)/}"
-	fi
-	if has_substring "$PROGRAM" "(6809 optimized)" ; then
-		inferred_setup_cpu=6809
-		PROGRAM="${PROGRAM// (6809 optimized)/}"
-	fi
+	has_del_tag "SG-8" && inferred_setup_graphics=SG-8 && inferred_setup_+=(inferred_setup_graphics)
+	has_del_tag "SG-8 intro" && inferred_setup_graphics=SG-8i && inferred_setup_+=(inferred_setup_graphics)
+	has_del_tag "SG-12" && inferred_setup_graphics=SG-12 && inferred_setup_+=(inferred_setup_graphics)
+	has_del_tag "SG-12 intro" && inferred_setup_graphics=SG-12i && inferred_setup_+=(inferred_setup_graphics)
+	has_del_tag "SG-24" && inferred_setup_graphics=SG-24 && inferred_setup_+=(inferred_setup_graphics)
+	has_del_tag "SG-24 intro" && inferred_setup_graphics=SG-24i && inferred_setup_+=(inferred_setup_graphics)
 
-	if has_substring "$PROGRAM" "(CocoVGA)" ; then
-		PROGRAM="${PROGRAM// (CocoVGA)/}"
-		inferred_setup_cocovga=yes
-	else
-		inferred_setup_cocovga=no
-	fi
-
-	if has_substring "$PROGRAM" "(SG-8)" ; then
-		PROGRAM="${PROGRAM// (SG-8)/}"
-		SG=SG-8
-	fi
-	if has_substring "$PROGRAM" "(SG-8 intro)" ; then
-		PROGRAM="${PROGRAM// (SG-8 intro)/}"
-		SG=SG-8\ Intro
-	fi
-	if has_substring "$PROGRAM" "(SG-12)" ; then
-		PROGRAM="${PROGRAM// (SG-12)/}"
-		SG=SG-12
-	fi
-	if has_substring "$PROGRAM" "(SG-12 intro)" ; then
-		PROGRAM="${PROGRAM// (SG-12 intro)/}"
-		SG=SG-12\ Intro
-	fi
-	if has_substring "$PROGRAM" "(SG-24)" ; then
-		PROGRAM="${PROGRAM// (SG-24)/}"
-		SG=SG-24\ Intro
-	fi
-	if has_substring "$PROGRAM" "(SG-24 intro)" ; then
-		PROGRAM="${PROGRAM// (SG-24 intro)/}"
-	fi
-
-	if has_substring "$PROGRAM" "(CoCo PSG)" ; then
-		inferred_setup_cocopsg=yes
-		PROGRAM="${PROGRAM// (CoCo PSG)/}"
-	else
-		inferred_setup_cocopsg=no
-	fi
-	if has_substring "$PROGRAM" "(Enhanced by sixxie)" ; then
-		SIXXIE=yes
-		PROGRAM="${PROGRAM// (Enhanced by sixxie)/}"
-	else
-		SIXXIE=no
-	fi
-
-	if has_substring "$PROGRAM" "(alt)" ; then
-		PROGRAM="${PROGRAM// (alt)/}"
-		ALT=yes
-	else
-		ALT=false
-	fi
-
-	PORT=no
-	if has_substring "$PROGRAM" "(Coco port)" ; then
-		PORT=COCO
-		PROGRAM="${PROGRAM// (Coco port)/}"
-	fi
-	if has_substring "$PROGRAM" "(Ports from ZX Spectrum)" ; then
-		PORT=ZXSPECTRUM
-		PROGRAM="${PROGRAM// (Ports from ZX Spectrum)/}"
-	fi
-
-	if has_substring "$PROGRAM" "(Cheat)" ; then
-		PROGRAM="${PROGRAM// (Cheat)/}"
-		CHEAT=yes
-	else
-		CHEAT=no
-	fi
-
-	if has_substring "$PROGRAM" "(Text)" ; then
-		PROGRAM="${PROGRAM// (Text)/}"
-		TEXT=yes
-	else
-		TEXT=no
-	fi
+	extratags=()
+	known_tags=("2MB Patch" "fixed for 1 and 2MB RAM" "RGB Patch" "RGB patch" "Enhanced by sixxie" "alt" "Coco port" "Ports from ZX Spectrum" "Cheat" "Text" "Prototype" "Compatibility patch")
+	for kt in "${known_tags[@]}" ; do
+		has_del_tag "$kt" && extratags+="$kt"
+	done
+#echo TAGS ${#tags[@]}="(${tags[@]})"
 
 	inferred_package_language=English
-	if has_substring "$PROGRAM" "(English translation)" ; then
-		TRANSLATION=yes
-		PROGRAM="${PROGRAM// (English translation)/}"
-	fi
-	if has_substring "$PROGRAM" "(Portuguese)" ; then
-		inferred_package_language=Portuguese
-		PROGRAM="${PROGRAM// (Portuguese)/}"
-	fi
-	if has_substring "$PROGRAM" "(Portuguese Translation)" ; then
-		inferred_package_language=Portuguese
-		TRANSLATION=yes
-		PROGRAM="${PROGRAM// (Portuguese Translation)/}"
-	fi
-	if has_substring "$PROGRAM" "(French)" ; then
-		inferred_package_language=French
-		PROGRAM="${PROGRAM// (French)/}"
-	fi
-	if has_substring "$PROGRAM" "(French Translation)" ; then
-		inferred_package_language=French
-		TRANSLATION=yes
-		PROGRAM="${PROGRAM// (French Translation)/}"
-	fi
+	has_del_tag "English translation" && extratags+=(Translation)
+	has_del_tag "Portuguese" && inferred_package_language=Portuguese && inferred_package_+=(inferred_package_language)
+	has_del_tag "Portuguse translation" && inferred_package_language=Portuguese && inferred_package_+=(inferred_package_language) && extratags+=(Translation)
+	has_del_tag "Portuguese translation" && inferred_package_language=Portuguese && inferred_package_+=(inferred_package_language) && extratags+=(Translation)
+	has_del_tag "Portuguese Translation" && inferred_package_language=Portuguese && inferred_package_+=(inferred_package_language) && extratags+=(Translation)
+	has_del_tag "French" && inferred_package_language=French && inferred_package_+=(inferred_package_language)
+	has_del_tag "French Translation" && inferred_package_language=French && inferred_package_+=(inferred_package_language) && extratags+=(Translation)
+	has_del_tag "French translation" && inferred_package_language=French && inferred_package_+=(inferred_package_language) && extratags+=(Translation)
 
-	inferred_package_author="${PROGRAM#* (}"
-	inferred_package_author="${inferred_package_author%%)*}"
-	if [ -z "$inferred_package_author" ] ; then
-		inferred_package_author="Unknown"
-	fi
-	# It is not the author, it's the year!
-	if [[ "$inferred_package_author" =~ [0-9][0-9][0-9][0-9] ]] ; then
-		inferred_package_year=$inferred_package_author
-		PROGRAM="${PROGRAM// ($inferred_package_year)/}"
-#echo "   YEAR: $inferred_package_year" >&2
-
-		# It is not the author, it's the reference!
-		inferred_package_author="${PROGRAM#* (}"
-		inferred_package_author="${inferred_package_author%%)*}"
-		if [[ "$inferred_package_author" =~ [0-9][0-9]-[0-9][0-9][0-9][0-9] ]] ; then
-			inferred_package_reference=$inferred_package_author
-			PROGRAM="${PROGRAM// ($inferred_package_reference)/}"
-
-#echo "   REFERENCE: $inferred_package_reference" >&2
-			inferred_package_author="${PROGRAM#* (}"
-			inferred_package_author="${inferred_package_author%%)*}"
+#echo TAGS ${#tags[@]}="(${tags[@]})"
+	# search for special patterns
+	for t in "${tags[@]}"
+	do 
+		if [[ "$t" =~ ^[0-9][0-9][0-9][0-9]$ ]] ; then
+			inferred_package_year="$t"
+			inferred_package_+=(inferred_package_year)
+			del_tag "$t"
 		fi
+		if [[ "$t" =~ ^[0-9][0-9]-[0-9][0-9][0-9][0-9]$ ]] ; then
+			inferred_package_reference="$t"
+			inferred_package_+=(inferred_package_reference)
+			del_tag "$t"
+		fi
+	done
+
+
+	# infer the author
+	if (( ${#tags[@]} == 0 )) ; then
+		inferred_package_author="Unknown"
+	else
+		# assumes the last element is the author (should be the first?) 
+		inferred_package_author="${tags[-1]}"
+		unset tags[-1]
 	fi
-#echo "   AUTHOR: $inferred_package_author" >&2
-	inferred_package_program="${PROGRAM% (*}"
 
 	GROUPDIRNAME=$(dirname "$DIRNAME")
 #echo GROUP: $(basename "$GROUPDIRNAME")
@@ -242,29 +187,13 @@ function infer_archive_cocoarchive() {
 #echo SUBCATEGORY: $SUBCATEGORY
 	fi
 
-	TMP=/tmp/ez
-	inferred_package_url="${FILE#*../Color Computer Archive/}"
-	inferred_package_url="https://colorcomputerarchive.com/repo/${inferred_package_url}"
-
-	inferred_package_+=(inferred_package_genre)
-	inferred_package_+=(inferred_package_author)
-	inferred_package_+=(inferred_package_file)
-	inferred_package_+=(inferred_package_language)
-	inferred_package_+=(inferred_package_md5)
-	[[ ! -z "$inferred_package_year" ]] && inferred_package_+=(inferred_package_year)
-	[[ ! -z "$inferred_package_reference" ]] && inferred_package_+=(inferred_package_reference)
-	inferred_package_+=(inferred_package_program)
-	inferred_package_+=(inferred_package_url)
-
-	inferred_setup_+=(inferred_setup_architecture)
+	inferred_setup_artifact=no
 	inferred_setup_+=(inferred_setup_artifact)
-	[[ "$inferred_setup_cpu" != 6809 ]] && inferred_setup_+=(inferred_setup_cpu)
-	[[ "$inferred_setup_os9" != no ]] && inferred_setup_+=(inferred_setup_os9)
-	[[ "$inferred_setup_ssc" != no ]] && inferred_setup_+=(inferred_setup_ssc)
-	[[ "$inferred_setup_rtr" != no ]] && inferred_setup_+=(inferred_setup_rtr)
-	inferred_setup_+=(inferred_setup_tv_type)
-	[[ "$inferred_setup_cocovga" != no ]] && inferred_setup_+=(inferred_setup_cocovga)
-	[[ "$inferred_setup_cocopsg" != no ]] && inferred_setup_+=(inferred_setup_cocopsg)
+	tags+=("${extratags[@]}")
+	if [[ ${#tags[@]} != 0 ]] ; then
+		inferred_package_tags="${tags[*]}"
+		inferred_package_+=(inferred_package_tags)
+	fi
 }
 
 function infer_guess_dsk_command() { # file.dsk
@@ -288,6 +217,7 @@ function infer_guess_dsk_command() { # file.dsk
 	# Empty disk
 	if [ $nfiles == 0 ] ; then
 		echo "PRINT\"EMPTY DiSK?\""
+		inferred_package_status="suspicious(empty disk)"
 		return -1
 	fi
 
@@ -308,17 +238,18 @@ function infer_guess_dsk_command() { # file.dsk
 			;;
 		*)
 			command=""
-			echo cannot infer: only one file that is not BAS nor BIN\($ext\)  >&2
+			#echo cannot infer: only one file that is not BAS nor BIN\($ext\)  >&2
 			return -1
 			;;
 		esac
 	fi
 
-	PENDING # (3)
+	inferred_package_status="suspicious(cannot infer when there is more than one file)"
+	# PENDING (3)
 	# infer the command, inspecting the disk content
 	# if there is a RUN.BAS / AUTOEXEC , run it.
 	# If there is X.BIN & X.BAS run the BAS
-	echo PENDING: more than one file that is not BAS nor BIN >&2
+	#echo PENDING: more than one file that is not BAS nor BIN >&2
 	return -1
 
 	#>&2 echo "createCommand" "$@"
@@ -344,7 +275,7 @@ function infer_zip() { # file.zip outfile.autococo
 #echo infer_zip "$@"
 	WORKDIR="$WORKDIR/infer"
 #echo WORKDIR "$WORKDIR"
-echo "FILE: $1"
+#echo "FILE: $1"
 	unzip_at "$1" "$WORKDIR"
 
 	pushd "$WORKDIR" > /dev/null
@@ -355,6 +286,7 @@ echo "FILE: $1"
 	original_dsks=(*.DSK)
 	dsks=()
 	i=0
+#echo ORIGINAL DSK = "${original_dsks[@]}" >&2
 
 	for element in "${original_dsks[@]}"
 	do
@@ -371,14 +303,14 @@ echo "FILE: $1"
 	dsks+=(${original_dsks[@]})
 	i=0
 	for disk in ${dsks[@]} ; do
-#echo DISK $(basename "$disk") $i
+#echo DISK $(basename "$disk") $i >&2
 		infer_dsk $(basename "$disk") $i
 		i=$(($i+1))
 	done
 	popd > /dev/null
-if [[ $i != 1 ]] ; then
-  echo "  *** MORE THAN ONE DISK"
-fi
+	if [[ $i != 1 ]] ; then
+		inferred_package_status="suspicious(more than one disk)"
+	fi
 
 #echo floppy: ${inferred_setup_floppy0}
 
@@ -401,7 +333,7 @@ function infer_dsk() { # file.dsk [number = 0]
 	if (( $number == 0 )) ; then 
 		inferred_setup_command=`infer_guess_dsk_command "$disk"`
 		if [[ $? != 0 ]] ; then
-			echo "  *** CANNOT GUESS DSK COMMAND"
+  			inferred_package_status="suspicious(icannot guess command)"
 		fi
 		inferred_setup_+=(inferred_setup_command)
 	fi

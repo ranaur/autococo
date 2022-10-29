@@ -28,10 +28,12 @@ function cmd_infer() { # dsk/zip/cas file
 	OUT="$2"
 	
 	inferred__=(inferred_package inferred_setup)
-	inferred_package_=()
+	inferred_package_=(inferred_package_status)
+	inferred_package_status="inferred"
 	inferred_setup_=()
 	infer_archive_cocoarchive "$1"
 
+	echo "FILE: $1"
 	case ${EXT,,} in
 	zip)
 		infer_zip "$1"
