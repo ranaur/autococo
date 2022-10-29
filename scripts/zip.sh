@@ -39,6 +39,8 @@ unzipStrip() {
     while [[ -f "$destdir" ]]; do destdir=${destdir}-$((i++)); done
     mkdir -p "$destdir"
     cp -ar "$@" -t "$destdir" -- "${files[@]}"
+
+    rm -rf -- "$tmpdir"
 }
 
 function expandZip() {
