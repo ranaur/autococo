@@ -26,32 +26,33 @@ __EOF__
 
 # INTERNAL: database_index_reload => recriates the list os indexes
 function database_index_reload() {
+	local index
 	DATABASE_INDEXES=()
 	for index in "$DATABASE_DIR"/*.index ; do
-		TAG=`basename "$index"`
-		TAG=${TAG%.*}		
-		DATABASE_INDEXES+=$TAG
+		local tag=`basename "$index"`
+		tag=${tag%.*}		
+		DATABASE_INDEXES+=$tag
 	done
 }
 
 # INTERNAL: database_index_new tag => creates a new index based on tag
 function database_index_new() {
-	TAG="$1"
+	local tag="$1"
 
-	if [ -z "$TAG" ] ; then return -1; fi
+	if [ -z "$tag" ] ; then return -1; fi
 
-	touch "$DATABASE_DIR/$TAG.index"
+	touch "$DATABASE_DIR/$tag.index"
 	database_index_reload
 	return 0
 }
 
 # INTERNAL: database_index_del tag => deletes an index on tag
 function database_index_del() {
-	TAG="$1"
+	local tag="$1"
 
-	if [ -z "$TAG" ] ; then return -1; fi
+	if [ -z "$tag" ] ; then return -1; fi
 
-	rm "$DATABASE_DIR/$TAG.index"
+	rm "$DATABASE_DIR/$tag.index"
 	database_index_reload
 	return 0
 }
@@ -60,12 +61,15 @@ function database_index_del() {
 function database_filepath() {
 	# echoes the path for the file in the database based on the key
 	# uses as: vi `database_filepath "mykey"`
-	if [ -z "$KEY" ] ; then return -1; fi
-	KEY="$1" 
+	local key="$1" 
+	if [ -z "$key" ] ; then return -1; fi
 
-	if [ ${#KEY} -gt $DATABASE_DIRWIDTH ] ; then 
-		PREFIX="${KEY:0:$DATABASE_DIRWIDTH}"
-		echo "$DATABASE_DIR/$PREFIX/$KEY.$DATABASE_FILEEXT"
+	if [ ${#key} -gt $DATABASE_DIRWIDTH ] ; then 
+		local prefix
+		prefix="${key:0:$DATABASE_DIRWIDTH}"
+		echo "$DATABASE_DIR/$prefix/$key.$DATABASE_FILEEXT"
+	else
+		echo "$DATABASE_DIR/$key.$DATABASE_FILEEXT"
 	fi
 	return 0
 }
@@ -73,139 +77,140 @@ function database_filepath() {
 # set key file = set file by key
 function database_set() {
 	# key file_to_save
-	KEY="$1" 
-	FILE="$2" 
+	local key="$1" 
+	local file="$2" 
 
-	if [ -z "$KEY" ] ; then return -1; fi
-	if [ -z "$FILE" ] ; then return -1; fi
-	if [ ! -f "$FILE" ] ; then return -2; fi
+	if [ -z "$key" ] ; then return -1; fi
+	if [ -z "$file" ] ; then return -1; fi
+	if [ ! -f "$file" ] ; then return -2; fi
 
-	OUTFILE=`database_filepath "$KEY"`
-	OUTDIR=`dirname "$OUTFILE"`
+	outfile=`database_filepath "$key"`
+	outdir=`dirname "$outfile"`
 
-	mkdir -p "$OUTDIR"
+	mkdir -p "$outdir"
 
-	cp "$FILE" "$OUTFILE"
+	cp "$file" "$outfile"
 
 	return $?
 }
 
 # get key file => get file by key
 function database_get() {
-	KEY="$1" 
-	OUTFILE="$2" 
+	local key="$1" 
+	local outfile="$2" 
 
-	if [ -z "$KEY" ] ; then return -1; fi
+	if [ -z "$key" ] ; then return -1; fi
 
-	FILE=`database_filepath "$KEY"`
-	if [ -z "$FILE" ] ; then return -1; fi
+	FILE=`database_filepath "$key"`
+	if [ -z "$file" ] ; then return -1; fi
 
-	OUTDIR=`dirname "$OUTFILE"`
+	local outdir=`dirname "$outfile"`
 
-	cp "$FILE" "$OUTFILE"
+	cp "$file" "$outfile"
 
 	return $?
 }
 # cat key file => cats file by key
 function database_cat() {
-	KEY="$1" 
+	local key="$1" 
 
-	if [ -z "$KEY" ] ; then return -1; fi
+	if [ -z "$key" ] ; then return -1; fi
 
-	FILE=`database_filepath "$KEY"`
+	FILE=`database_filepath "$key"`
 
-	cat "$FILE"
+	cat "$file"
 
 	return $?
 }
 
 
 # del key = remove file by key
-function database_del() {
-	# key
-	KEY="$1"
+function database_del() { # key
+	local key="$1"
 
-	if [ -z "$KEY" ] ; then return -1; fi
-	OUTFILE=`database_filepath "$KEY"`
+	if [ -z "$key" ] ; then return -1; fi
+	local outfile=`database_filepath "$key"`
 
 	# file does not exist
-	if [ ! -f "$FILE" ] ; then return 0; fi
+	if [ ! -f "$outfile" ] ; then return 0; fi
 
-	rm "$OUTFILE"
-	RES=$?
+	rm "$outfile"
+	local res=$?
+
 	# remove directory if it is the last file
-	OUTDIR=`dirname "$OUTFILE"`
-	rmdir "$OUTDIR" >& /dev/null
+	local outdir=`dirname "$outfile"`
+	rmdir "$outdir" >& /dev/null
 
 	# remove on indexes
-	for TAG in ${DATABASE_INDEXES[@]}; do
-		database_index_update $TAG $KEY
+	local tag
+	for tag in ${DATABASE_INDEXES[@]}; do
+		database_index_update $tag $key
 	done
 
-	return $RES
+	return $res
 }
 
 # INTERNAL: index_update tag key [value] => add index info for file under key. If value is ommited, the index entry is removed
 function database_index_update() {
-	TAG="$1"
-	KEY="$2"
-	VALUE="$3"
+	local tag="$1"
+	local key="$2"
+	local value="$3"
 
-	if [ -z "$TAG" ] ; then return -1; fi
-	if [ -z "$KEY" ] ; then return -1; fi
-	INDEX="$DATABASE_DIR/$TAG.index"
+	if [ -z "$tag" ] ; then return -1; fi
+	if [ -z "$key" ] ; then return -1; fi
+	local index="$DATABASE_DIR/$tag.index"
 
-	if [ -f "$INDEX" ] ; then
+	if [ -f "$index" ] ; then
 		# remove index entry
-		cp "$INDEX" "$INDEX.tmp"
-		#echo grep -v "^$KEY$DATABASE_DELIMITER" "$INDEX.tmp"
-		grep -v "^$KEY$DATABASE_DELIMITER" "$INDEX.tmp" > "$INDEX"
-		rm "$INDEX.tmp"
+		cp "$index" "$index.tmp"
+		#echo grep -v "^$key$DATABASE_DELIMITER" "$index.tmp"
+		grep -v "^$key$DATABASE_DELIMITER" "$index.tmp" > "$index"
+		rm "$index.tmp"
 	fi
 
 	# If value is ommited, the index entry is removed
-	if [ -z "$VALUE" ] ; then return 0; fi
+	if [ -z "$value" ] ; then return 0; fi
 
-	echo "$KEY$DATABASE_DELIMITER$VALUE" >> "$INDEX"
+	echo "$key$DATABASE_DELIMITER$value" >> "$index"
 
 	return 0
 }
 
 # index_lookup tag pattern = search index for tag, echoing every key that satisfies the pattern
 function database_index_lookup() {
-	TAG="$1"
-	PATTERN="$2"
+	local tag="$1"
+	local pattern="$2"
 
-	if [ -z "$TAG" ] ; then return -1; fi
-	if [ -z "$PATTERN" ] ; then return -1; fi
+	if [ -z "$tag" ] ; then return -1; fi
+	if [ -z "$pattern" ] ; then return -1; fi
 
-	INDEX="$DATABASE_DIR/$TAG.index"
-	grep "^.*$DATABASE_DELIMITER.*$PATTERN.*$" "$INDEX" | cut -d $DATABASE_DELIMITER -f 1
+	local index="$DATABASE_DIR/$tag.index"
+	grep "^.*$DATABASE_DELIMITER.*$pattern.*$" "$index" | cut -d $DATABASE_DELIMITER -f 1
 
 	return 0
 }
 
 # INTERNAL: index_md_file => indexes an MD file
 function database_index_md_file() {
+	local filename="$1"
+	if [ -z "$filename" ] ; then return -1; fi
 
-	FILENAME="$1"
-	if [ -z "$FILENAME" ] ; then return -1; fi
-
-	KEY=`basename "$FILENAME"`
-	KEY=${KEY%.*}
+	local key=`basename "$filename"`
+	key=${key%.*}
 
 	database_index_reload
 
-	source <(parse_yaml "$FILENAME" indexed_)
+	source <(parse_yaml "$filename" indexed_)
 
-	echo Processing "$FILENAME" ...
+	echo Processing "$filename" ...
 	#echo "${!DATABASE_@}"
 	#echo INDEXES: ${DATABASE_INDEXES[@]}
 	#echo DATA: "${!indexed_@}"
 
-	for TAG in ${DATABASE_INDEXES[@]}; do
-		VALUE_VAR="indexed_$TAG"
-		database_index_update $TAG $KEY "${!VALUE_VAR}"
+	local tag
+	for tag in ${DATABASE_INDEXES[@]}; do
+		local value_var="indexed_$tag"
+		database_index_update $tag $key "${!value_var}"
 	done
 
 	unset "${!indexed_@}"
