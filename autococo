@@ -15,17 +15,22 @@ function call_emulator() {
 	. "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
 }
 
-function cmd_infer() { # dsk/zip/cas file
-	SAVE=false
-	if [ "$1" == "-s" ] ; then
-		SAVE=true
-		shift
+function cmd_download() { # URL
+	local file=$(autococo_download "$@")
+	if [[ $? == 0 ]] ; then
+		echo "Download ok. Local file at $file"
+		return 0
+	else
+		echo "ERROR: Download failed!"
+		return 1
 	fi
+}
 
-	EXT="${1##*.}"
+function cmd_infer() { # dsk/zip/cas file
+	local ext="${1##*.}"
 	filename=`basename "$1"`
-	#OUT="${filename%.*}.autococo"
-	OUT="$2"
+	local out="$2"
+	#out="${filename%.*}.autococo"
 	
 	inferred__=(inferred_package inferred_setup)
 	inferred_package_=(inferred_package_status)
@@ -34,7 +39,7 @@ function cmd_infer() { # dsk/zip/cas file
 	infer_archive_cocoarchive "$1"
 
 	echo "FILE: $1"
-	case ${EXT,,} in
+	case ${ext,,} in
 	zip)
 		infer_zip "$1"
 #echo RET: $? "$1"
@@ -49,12 +54,12 @@ function cmd_infer() { # dsk/zip/cas file
 		infer_ccc "$1"
 		;;
 	*)
-		echo Cannot infer for extension $EXT
+		echo Cannot infer for extension $ext
 		return -1
 	esac
 
 #echo VARIABLES[]: ${!inferred_@}
-	save_yaml inferred "$OUT"
+	save_yaml inferred "$out"
 
 	return $?
 }
@@ -73,8 +78,8 @@ __HELP__
 	
 	autococo_load "$2"
 
-	FILETYPE=${1##*.}
-	case ${FILETYPE,,} in
+	local filetype=${1##*.}
+	case ${filetype,,} in
 	zip)
 	  WORKDIR="$WORKDIR/run"
 	  unzip_at "$1" "$WORKDIR"
@@ -111,6 +116,11 @@ case "$1" in
     cmd_infer "$@"
     exit $?
     ;;
+  download)
+    shift
+    cmd_download "$@"
+    exit $?
+    ;;
   *)
     cat << __HELP__
 usage: $0 command parameters ...
@@ -118,7 +128,7 @@ usage: $0 command parameters ...
 where command is:
   infer _file_ = infer the AUTOCOCO from file
   run _autococo_file_ _file_ = execute the file in the emulator using autococo as configuration
-
+  download [-f] _url_ = downloads URL and stores in the archive (-f forces the download if file already exist)
 __HELP__
     exit -1
     ;;
