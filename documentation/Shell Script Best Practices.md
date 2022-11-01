@@ -62,7 +62,8 @@ When you need the unquoted behaviour, using bash arrays will likely serve you mu
 * Use cd "$(dirname "$0")", which works in most cases.
 
 * Use shellcheck. Heed its warnings.
-
+    https://www.shellcheck.net/
+    
 # Template
 
 ```bash
