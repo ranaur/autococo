@@ -8,16 +8,16 @@ source "$SCRIPTDIR/autococo.sh"
 function call_emulator() {
 #debugfc $FUNCNAME "$@"
 	if [ ! -x "$SCRIPTDIR/emulator.$EMULATOR.sh" ] ; then
-		error emulator $EMULATOR does not exist!
-		return -1
+		error emulator "$EMULATOR" does not exist!
+		return 1
 	fi
 
-	. "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+	echo . "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
 }
 
 function cmd_download() { # URL
 #debugfc $FUNCNAME "$@"
-	local file=$(autococo_download "$@")
+	file=$(autococo_download "$@")
 	if [[ $? == 0 ]] ; then
 		echo "Download ok. Local file at $file"
 		return 0
@@ -30,9 +30,9 @@ function cmd_download() { # URL
 function cmd_infer() { # dsk/zip/cas file
 #debugfc $FUNCNAME "$@"
 	local ext="${1##*.}"
-	filename=`basename "$1"`
+	filename=$(basename "$1")
 	local out
-	if [[ ! -z "$2" ]] ; then
+	if [[ -n -z "$2" ]] ; then
 		out="$2"
 	else
 		out="${filename%.*}.autococo"
@@ -59,12 +59,12 @@ function cmd_infer() { # dsk/zip/cas file
 		infer_ccc "$1"
 		;;
 	*)
-		echo Cannot infer for extension $ext
-		return -1
+		echo Cannot infer for extension "$ext"
+		return 1
 	esac
 
 #echo VARIABLES[]: ${!inferred_@}
-debug out=$out
+#debug out="$out"
 	save_yaml inferred "$out"
 
 	return $?
@@ -72,35 +72,79 @@ debug out=$out
 
 function cmd_run() { # autococo.file dsk/zip/cas file
 #echo cmd_run[$#] "$@"
-	if [ $# -ne 2 ] ; then 
+	if [ $# -ne 1 ] ; then 
 		cat << __HELP__
-usage: $0 run file autococo
+usage: $0 run file
 
-Runs file using autococo as configuration. File can be a .ZIP, .DSK, .CAS or .CCC
+Runs file in the emulator configured. The behaviour depends on the filetype:
+   .autococo => fetch the file in URL or source field, and execute
+   .DSK, .CAS, .ZIP or .CCC => looks for an .autococo in the same directory
+	infer, if it doesn't exit
 
 __HELP__
 		return -1;
 	fi
-	
-	autococo_load "$2"
 
-	local filetype=${1##*.}
+	local file="$1"
+	local filetype="${file##*.}"
+	if [[ ${filetype,,} == "autococo" ]] ; then
+		# user passsed autococo, but not the ZIP/DSK/CAS/CCC
+		autococo="$file"
+
+		autococo_load "$autococo"
+		local dir ; dir=$(dirname "$file")
+		file="$dir/$coco_package_file"
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.zip" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.ZIP" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.DSK" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.dsk" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.CCC" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.ccc" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.CAS" ; fi
+		if [[ ! -f "$file" ]] ; then file="${1%.*}.cas" ; fi
+		if [[ ! -f "$file" ]] ; then
+			if [[ -z "$coco_package_url" ]] ; then
+				error "Passed autococo has no URL to download, check if there is the original ZIP/DSK/CAS/CCC file with the same base name as the autococo file or correct the package:url parameter."			else
+				return 1
+			else
+				cmd_download "$coco_package_url"
+				# cmd_download already sets $file
+				if [[ $? != 0 ]] ; then
+					error "Cannot find/download necessary files to run this autococo."
+				fi
+			fi
+		fi
+			# change the filetype variable for the real one
+		filetype="${file##*.}"
+	else # all other extensions
+		# user passsed ZIP/DSK/CAS/CCC, but not the autococo
+		# looks for an autococo file and creates it if it is not found
+		local autococo="${file%.*}.autococo"
+		if [[ ! -f "$autococo" ]] ; then
+			cmd_infer "$1" "$autococo"
+		fi
+
+		autococo_load "$autococo"
+	fi
+
+	# at this point $file has the ZIP/DSK/CAS/CCC and $autococo the autococo (loaded in coco_* vars)
+
 	case ${filetype,,} in
 	zip)
 	  WORKDIR="$WORKDIR/run"
 	  unzip_at "$1" "$WORKDIR"
 	  ;;
 	dsk)
-	  FLOPPY0="$1"
-	  WORKDIR=`dirname "$1"`
+	  coco_setup_floppy0="$1"
+	  WORKDIR=$(dirname "$1")
 	  ;;
 	cas)
-	  CASSETTE="$1"
-	  WORKDIR=`dirname "$1"`
+	  coco_setup_cassette="$1"
+	  WORKDIR=$(dirname "$1")
 	  ;;
 	ccc)
-	  rompack="$1"
-	  WORKDIR=`dirname "$1"`
+	  coco_setup_rompack="$1"
+	  WORKDIR=$(dirname "$1")
 	  ;;
 	*)
 	  echo NOT IMPLEMENTED

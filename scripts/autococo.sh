@@ -36,3 +36,9 @@ source "$SCRIPTDIR/zip.sh"
 source "$SCRIPTDIR/dsk.sh"
 source "$SCRIPTDIR/autococo.infer.sh"
 source "$SCRIPTDIR/autococo.download.sh"
+
+function autococo_load() { # loads the autococo file in environment
+       source <(parse_yaml "$1" coco_)
+#       set | grep ^coco_ >&2
+}
+

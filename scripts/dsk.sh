@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
+# TODO:
+#	access a file (copy file from disk)
+#   get the real file size
+#	write access?
+#
+
 function dsk_load() { # FILENAME [DISK #]
 #debugfc $FUNCNAME "$@"
+	if [[ ! -f "$1" ]] ; then return -1 ; fi
+
 	dsk_format=unknown
-	local filesize=$(stat -c%s "$1")
+	local filesize=$($CMD_STAT -c%s "$1")
 	if [[ $filesize == 161280 ]] ; then
 		# A 35 track, 18 sector, 256 bytes Disk
 		dsk_format=35TRACK
@@ -136,6 +144,7 @@ function dsk_dir() { # file [-BB = show only BIN and BAS files]
 	dsk_load "$1"
 	if [[ $? != 0 ]] ; then return -1; fi
 	shift
+	if [[ $dsk_format != "DECB" ]] ; then return -1; fi
 	dsk_readdirectory
 	local includeentry
 	local index

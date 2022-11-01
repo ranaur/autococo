@@ -9,22 +9,10 @@ trim() {
     printf '%s' "$var"
 }
 
-
-function decb() {
-	DECB=`which decb`
-	CMD="$1"
-	DIRNAME=`dirname "$2"`
-	DSKNAME=`basename "$2"`
-
-	shift 2
-	pushd "$DIRNAME" > /dev/null
-	$DECB "$CMD" "$DSKNAME," "$@"
-	RES=$?
-	popd > /dev/null
-	exit $RES
+#set +e #otherwise the script will exit on error
+containsElement () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
 }
-
-function error() {
-        echo ERROR: $@ &> /dev/stderr
-}
-

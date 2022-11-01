@@ -202,136 +202,163 @@ function infer_guess_dsk_command() { # file.dsk
 	dsk_load "$1"
 	if [[ $dsk_format != "DECB" ]] ; then
 		echo "DOS"
+		inferred_package_status="inferred"
 		return 0
 	fi
 
-	dsk_dir "$1" -BB >&2
-#debug ${dir[@]}
-	nfiles=${#dir[@]}
-#echo NFILES = $nfiles >&2
-#echo DIR: ${dir[@]} >&2
-	# Empty disk
-	if [ $nfiles == 0 ] ; then
-		echo "PRINT\"EMPTY DiSK?\""
-		inferred_package_status="suspicious(empty disk)"
-		return -1
+	inferred_package_status="inferred with doubts (cannot infer)"
+
+	dsk_dir "$1" BAS
+	# Only one BAS file
+	if [ ${#dir[@]} == 1 ] ; then
+		local line=${dir[0]}
+		local file=$(echo "$line" | cut -d : -f 1)
+		echo "RUN\"$file\""
+		inferred_package_status="inferred"
 	fi
 
-#debug 3
-	if [ $nfiles == 1 ] ; then
-		# easy, only one file in the dir
-		line=${dir[0]}
-		file=$(echo "$line" | cut -d : -f 1)
-		ext=$(echo "$line" | cut -d : -f 2)
-#echo EXT $ext
-		case $ext in
-		BAS)
+	# More than one BAS file
+	if [ ${#dir[@]} -gt 1 ] ; then
+		local file=""
+		local diskname="${1##*.}"
+		if containsElement "${diskname%[0-9]}" "${dir_name[@]}" ; then file="${diskname%[0-9]}.BAS" ; fi
+		if containsElement "${diskname%[0-9]}" "${dir_name[@]}" ; then file="${diskname%[0-9][0-9]}.BAS" ; fi
+		if containsElement "$diskname" "${dir_name[@]}" ; then file="$diskname.BAS" ; fi
+		if containsElement "AUTOEXEC" "${dir_name[@]}" ; then file="AUTOEXEC.BAS" ; fi
+		if containsElement "BOOT" "${dir_name[@]}" ; then file="BOOT.BAS" ; fi
+		if containsElement "MENU" "${dir_name[@]}" ; then file="MENU.BAS" ; fi
+
+		if [[ -z "$file" ]] ; then
+			inferred_package_status="inferred with doubts (more than one BAS file)"
+		else
+			inferred_package_status="inferred with doubts (guessed $file)"
 			echo "RUN\"$file\""
-			return 0
-			;;
-		BIN)
-			echo "LOADM\"$file\":EXEC"
-			return 0
-			;;
-		*)
-			command=""
-			#echo cannot infer: only one file that is not BAS nor BIN\($ext\)  >&2
-			return -1
-			;;
+		fi
+	fi
+
+	# No BAS files, search for BIN files
+	if [ ${#dir[@]} == 0 ] ; then
+		dsk_dir "$1" BIN
+
+		case ${#dir[@]} in
+			0)	# no BIN files
+				inferred_package_status="inferred with doubts (no BAS or BIN file)"
+				;;
+			1)
+				inferred_package_status="inferred"
+				local line=${dir[0]}
+				local file=$(echo "$line" | cut -d : -f 1)
+				echo "LOADM\"$file\":EXEC"
+				;;
+			*)
+				local file=""
+				local diskname="${1##*.}"
+				if containsElement "${diskname%[0-9]}" "${dir_name[@]}" ; then file="${diskname%[0-9]}.BIN" ; fi
+				if containsElement "${diskname%[0-9]}" "${dir_name[@]}" ; then file="${diskname%[0-9][0-9]}.BIN" ; fi
+				if containsElement "$diskname" "${dir_name[@]}" ; then file="$diskname.BIN" ; fi
+				if containsElement "AUTOEXEC" "${dir_name[@]}" ; then file="AUTOEXEC.BIN" ; fi
+				if containsElement "BOOT" "${dir_name[@]}" ; then file="BOOT.BIN" ; fi
+				if containsElement "MENU" "${dir_name[@]}" ; then file="MENU.BIN" ; fi
+
+				if [[ -z "$file" ]] ; then
+					inferred_package_status="inferred with doubts (more than one BIN file)"
+				else
+					inferred_package_status="inferred (guessed $file)"
+					echo "LOADM\"$file\":EXEC"
+				fi
+				;;
 		esac
 	fi
 
-	inferred_package_status="suspicious(cannot infer when there is more than one file)"
-	# PENDING (3)
-	# infer the command, inspecting the disk content
-	# if there is a RUN.BAS / AUTOEXEC , run it.
-	# If there is X.BIN & X.BAS run the BAS
-	#echo PENDING: more than one file that is not BAS nor BIN >&2
-	return -1
-
-	#>&2 echo "createCommand" "$@"
-	#decb dir "$1"
-#	FIRST_BAS="`decb dir "$1" | tail +3 | grep ".........BAS" | tail -1 | cut -b 1-8`"
-#	FIRST_BAS=`trim "${FIRST_BAS}"`
-#	if [ -z "$FIRST_BAS" ] ; then
-#		FIRST_BIN="`decb dir "$1" | tail +3 | grep ".........BIN" | tail -1 | cut -b 1-8`"
-#		FIRST_BIN=`trim "${FIRST_BIN}"`
-#		if [ ! -z "$FIRST_BIN" ] ; then
-#			cat << __EOF__
-#command: LOADM"$FIRST_BIN":EXEC
-#__EOF__
-#		fi
-#	else
-#		cat << __EOF__
-#command: RUN"$FIRST_BAS"
-#__EOF__
-#	fi
+	return 0
 }
 
 function infer_zip() { # file.zip outfile.autococo
 #debugfc $FUNCNAME "$@"
 	WORKDIR="$WORKDIR/infer"
-#echo WORKDIR "$WORKDIR"
-#echo "FILE: $1"
 	unzip_at "$1" "$WORKDIR"
 
 	pushd "$WORKDIR" > /dev/null
 
-	# get all the DSKs files and sort the *BOOT.DSK first, then alphabetically.
 	shopt -s nocaseglob
 	shopt -s nullglob
-	original_dsks=(*.DSK)
-	dsks=()
-	i=0
-#echo ORIGINAL DSK = "${original_dsks[@]}" >&2
+	
+	inferred_package_status="inferred with doubts (no file found)"
+	# Look for CASs files inside ZIP file
+	local files_cas=(*.CAS)
+	case ${#files_cas} in
+		0)	# no CAS files, ok
+			;;
+		1)	# one cas file, infer it
+			infer_cas "${files_cas[0]}"
+			;;
+		*)	# mode than one file
+			inferred_package_status="inferred with doubts (more than one CAS file)"
+			;;
+	esac
 
-	for element in "${original_dsks[@]}"
-	do
-#echo ELEMENT $element
-		if [[ "$element" =~ "BOOT.DSK" ]] ; then
-#echo MATCH
-			unset original_dsks[$i]
-			dsks+=("$element")
-		fi
-		i=$((i+1))
-	done
-	IFS=$'\n' original_dsks=($(sort <<<"${original_dsks[*]}"))
-	unset IFS
-	dsks+=(${original_dsks[@]})
-	i=0
-	for disk in ${dsks[@]} ; do
-#echo DISK $(basename "$disk") $i >&2
-		infer_dsk $(basename "$disk") $i
-		i=$(($i+1))
-	done
+	# Look for DSKs files inside ZIP file
+	# get all the DSKs files and sort the *BOOT.DSK first, then alphabetically.
+	local files_dsk=(*.DSK)
+#debug N_DSK=${#files_dsk[@]}
+#debug DSKs="${files_dsk[@]}"
+	case ${#files_dsk[@]} in
+		0)	# no DSK files, ok
+			;;
+		1)	# only one DSK file, infer it
+#debug FILE:"${files_dsk}"
+			infer_dsk "${files_dsk}"
+			;;
+		*)	# mode than one file
+			inferred_package_status="inferred with doubts (more than one CAS file)"
+			local sorted_dsks
+
+			IFS=$'\n' sorted_dsks=($(sort <<<"${files_dsk[*]}"))
+			unset IFS
+
+			#if containsElement "BOOT.DSK" "${files_dsk[@]}" ; then
+			#	# put it in the first place
+			#	sorted_dsks=( "${files_dsk[@]/BOOT.DSK}" )
+			#	sorted_dsks=( "BOOT.DSK" "${files_dsk[@]}" )
+			#fi
+
+			local i=0
+			local disk
+			for disk in ${dsks[@]} ; do
+#debug "infer_dsk($i)" $disk
+				infer_dsk $(basename "$disk") $i
+				i=$(($i+1))
+			done
+			if [[ $i != 1 ]] ; then
+				inferred_package_status="inferred with doubts (more than one disk)"
+			fi
+			if [[ $i -gt 4 ]] ; then
+				inferred_package_status="inferred with doubts (more than four disks)"
+			fi
+			;;
+	esac
+
 	popd > /dev/null
-	if [[ $i != 1 ]] ; then
-		inferred_package_status="suspicious(more than one disk)"
-	fi
 
-#echo floppy: ${inferred_setup_floppy0}
-
-#echo VARIABLES[]: ${!inferred_@}
 	#rm -rf "$WORKDIR"
 	return 0
 }
 
 function infer_dsk() { # file.dsk [number = 0]
 #debugfc $FUNCNAME "$@"
-#echo infer_dsk "$@"
-	extension="${1##*.}"
+	local extension="${1##*.}"
 	extension=${extension,,}
 	if [[ "$extension" != "dsk" ]] ; then exit 1; fi
 
-	number=${2:-0}
+	local number=${2:-0}
+	local disk=$(basename "$1")
 	declare -g "inferred_setup_floppy$number=$(basename \"$1\")"
 
 	inferred_setup_+=(inferred_setup_floppy$number)
-
 	if (( $number == 0 )) ; then 
-		inferred_setup_command=`infer_guess_dsk_command "$disk"`
+		inferred_setup_command=$(infer_guess_dsk_command "$disk")
 		if [[ $? != 0 ]] ; then
-  			inferred_package_status="suspicious(icannot guess command)"
+  			inferred_package_status="inferred with doubts (cannot guess command)"
 		fi
 		inferred_setup_+=(inferred_setup_command)
 	fi
@@ -341,13 +368,13 @@ function infer_dsk() { # file.dsk [number = 0]
 
 function infer_cas() { # file.dsk outfile.autococo
 #debugfc $FUNCNAME "$@"
-	extension="${1##*.}"
+	local extension="${1##*.}"
 	extension=${extension,,}
 	if [[ "$extension" != "cas" ]] ; then exit 1; fi
 
 	inferred_setup_cassette=$(basename `$1`)
 
-	PENDING # (1)
+	PENDING # (1) find out of if the file is BIN or BAS
 
 	#inferred_setup_command="CLOAD"
 	inferred_setup_command="CLOADM"
@@ -358,7 +385,7 @@ function infer_cas() { # file.dsk outfile.autococo
 
 function infer_ccc() { # file.ccc outfile.autococo
 #debugfc $FUNCNAME "$@"
-	extension="${1##*.}"
+	local extension="${1##*.}"
 	extension="${extension,,}"
 	if [[ "$extension" != "ccc" ]] && [[ "$extension" != "rom" ]] ; then exit 1; fi
 
