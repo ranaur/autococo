@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # source: https://github.com/mrbaseman/parse_yaml.git
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ROMDIR=/media/share1/roms
 
 XROAR=`which xroar`

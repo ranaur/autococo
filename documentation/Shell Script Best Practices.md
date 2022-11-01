@@ -41,7 +41,7 @@ This article is about a few quick thumb rules I use when writing shell scripts t
 * One place where it’s okay not to is on the left-hand-side of an [[ ]] condition. But even there I’d recommend quoting.
 When you need the unquoted behaviour, using bash arrays will likely serve you much better.
 
-10. Use local variables in functions.
+*10. Use local variables in functions.
 
 11. Accept multiple ways that users can ask for help and respond in kind.
 
@@ -106,3 +106,4 @@ Edit 2: Fix from https://news.ycombinator.com/item?id=33354759.
 Discuss on: Hacker News.
 ---
 From: https://sharats.me/posts/shell-script-best-practices/?utm_source=tldrnewsletter
+

@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+
+### MD File structure
 # inferred__
 # inferred_package_
 #   inferred_package_author:
@@ -25,17 +28,11 @@
 # CCC
 #   inferred_setup_rompack: <file>
 
-
-function has_substring() {
-        [[ "$1" == *"$2"* ]]
-}
-
-
 # infer package details from a cocoarchive file
 #   Currently only works with ZIP file from Disks directory
 #
 function infer_archive_cocoarchive() {
-#echo FILE: "$1" >&2
+#debugfc $FUNCNAME "$@"
 	tags=()
 	function has_tag() { # tag := returns 0 if there is the tag -1 otherwise
 		[[ ":${tags[*]}:" =~ ":$1:" ]]
@@ -76,7 +73,7 @@ function infer_archive_cocoarchive() {
 	inferred_package_file=`basename "$1"`
 	inferred_package_+=(inferred_package_file)
 
-	inferred_package_md5=$(md5sum "$FULLFILEPATH" | cut -b -32)
+	inferred_package_md5=$("$CMD_MD5SUM" "$FULLFILEPATH" | cut -b -32)
 	inferred_package_+=(inferred_package_md5)
 
 	inferred_package_program="${inferred_package_file%.*}"
@@ -197,9 +194,9 @@ function infer_archive_cocoarchive() {
 }
 
 function infer_guess_dsk_command() { # file.dsk
-#echo infer_guess_dsk_command "$@" >&2
 	# return 0 of could guess, -1 if not
 	# outputs: $command => command to load the disk
+#debugfc $FUNCNAME "$@"
 
 	# check if it is a OS-9/DOS disk
 	dsk_load "$1"
@@ -208,9 +205,8 @@ function infer_guess_dsk_command() { # file.dsk
 		return 0
 	fi
 
-	# PENDING - use direct acccess on disk and not DECB
 	dsk_dir "$1" -BB >&2
-
+#debug ${dir[@]}
 	nfiles=${#dir[@]}
 #echo NFILES = $nfiles >&2
 #echo DIR: ${dir[@]} >&2
@@ -221,6 +217,7 @@ function infer_guess_dsk_command() { # file.dsk
 		return -1
 	fi
 
+#debug 3
 	if [ $nfiles == 1 ] ; then
 		# easy, only one file in the dir
 		line=${dir[0]}
@@ -272,7 +269,7 @@ function infer_guess_dsk_command() { # file.dsk
 }
 
 function infer_zip() { # file.zip outfile.autococo
-#echo infer_zip "$@"
+#debugfc $FUNCNAME "$@"
 	WORKDIR="$WORKDIR/infer"
 #echo WORKDIR "$WORKDIR"
 #echo "FILE: $1"
@@ -320,6 +317,7 @@ function infer_zip() { # file.zip outfile.autococo
 }
 
 function infer_dsk() { # file.dsk [number = 0]
+#debugfc $FUNCNAME "$@"
 #echo infer_dsk "$@"
 	extension="${1##*.}"
 	extension=${extension,,}
@@ -342,6 +340,7 @@ function infer_dsk() { # file.dsk [number = 0]
 }
 
 function infer_cas() { # file.dsk outfile.autococo
+#debugfc $FUNCNAME "$@"
 	extension="${1##*.}"
 	extension=${extension,,}
 	if [[ "$extension" != "cas" ]] ; then exit 1; fi
@@ -358,6 +357,7 @@ function infer_cas() { # file.dsk outfile.autococo
 }
 
 function infer_ccc() { # file.ccc outfile.autococo
+#debugfc $FUNCNAME "$@"
 	extension="${1##*.}"
 	extension="${extension,,}"
 	if [[ "$extension" != "ccc" ]] && [[ "$extension" != "rom" ]] ; then exit 1; fi

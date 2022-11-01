@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # grep tag value = grep all files for tag:value
 ## Index functions

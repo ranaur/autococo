@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function unzip_at() {
 #echo unzip_at "$@"
         # unzips file $1 to directory $2

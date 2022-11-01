@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 trim() {
     local var="$*"
     # remove leading whitespace characters

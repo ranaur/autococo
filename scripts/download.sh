@@ -1,7 +1,8 @@
-DOWNLOADER=`which curl`
+#!/usr/bin/env bash
+if [[ -z "$CMD_CURL" ]] ; then CMD_CURL=`which curl` ; fi
 
 function download() { # url file => download URL to file
-	$DOWNLOADER "$1" --create-dirs -k -L -o "$2"
+	"$CMD_CURL" "$1" --create-dirs -k -L -o "$2"
 
 	return $?
 }

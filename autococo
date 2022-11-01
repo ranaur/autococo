@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 AUTOCOCODIR=$(realpath "$0")
 AUTOCOCODIR=$(dirname "$AUTOCOCODIR")
 SCRIPTDIR="$AUTOCOCODIR/scripts"
@@ -7,6 +6,7 @@ SCRIPTDIR="$AUTOCOCODIR/scripts"
 source "$SCRIPTDIR/autococo.sh"
 
 function call_emulator() {
+#debugfc $FUNCNAME "$@"
 	if [ ! -x "$SCRIPTDIR/emulator.$EMULATOR.sh" ] ; then
 		error emulator $EMULATOR does not exist!
 		return -1
@@ -16,6 +16,7 @@ function call_emulator() {
 }
 
 function cmd_download() { # URL
+#debugfc $FUNCNAME "$@"
 	local file=$(autococo_download "$@")
 	if [[ $? == 0 ]] ; then
 		echo "Download ok. Local file at $file"
@@ -27,10 +28,15 @@ function cmd_download() { # URL
 }
 
 function cmd_infer() { # dsk/zip/cas file
+#debugfc $FUNCNAME "$@"
 	local ext="${1##*.}"
 	filename=`basename "$1"`
-	local out="$2"
-	#out="${filename%.*}.autococo"
+	local out
+	if [[ ! -z "$2" ]] ; then
+		out="$2"
+	else
+		out="${filename%.*}.autococo"
+	fi
 	
 	inferred__=(inferred_package inferred_setup)
 	inferred_package_=(inferred_package_status)
@@ -42,7 +48,6 @@ function cmd_infer() { # dsk/zip/cas file
 	case ${ext,,} in
 	zip)
 		infer_zip "$1"
-#echo RET: $? "$1"
 		;;
 	dsk)
 		infer_dsk "$1"
@@ -59,6 +64,7 @@ function cmd_infer() { # dsk/zip/cas file
 	esac
 
 #echo VARIABLES[]: ${!inferred_@}
+debug out=$out
 	save_yaml inferred "$out"
 
 	return $?

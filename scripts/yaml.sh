@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #function parse_yaml {
 #   local prefix="$2"
@@ -19,7 +19,7 @@
 #   }'
 #}
 
-source $(dirname "$0")/scripts/parse_yaml.sh
+source $SCRIPTDIR/parse_yaml.sh
 
 function get_yaml() {
 	# get_yaml FILE tag
