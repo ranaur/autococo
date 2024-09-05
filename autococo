@@ -15,7 +15,33 @@ function call_emulator() {
 	echo . "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
 }
 
-function cmd_prepare() { # URL
+function cmd_execute() {
+#debugfc $FUNCNAME "$@"
+	if [ $# -ne 1 ] && [ $# -ne 2 ] ; then 
+		cat << __HELP__
+usage: $0 execute package [config]
+
+Runs package in the emulator configured. Optional parameter is the configuration.
+
+__HELP__
+		return -1;
+	fi
+
+	local package="$1"
+	local configuration="${2:-default}"
+	local autococofile="${configuration}.autococo"
+	local autococo="${PACKAGES_DIR}/${package}/${autococofile}"
+	if [[ ! -f "${autococo}" ]] ; then
+		error "Configuration $configuration not found in package directory. Aborting"
+		exit -1
+	fi
+
+	autococo_load "$autococo"
+
+	call_emulator
+}
+
+function cmd_prepare() {
 #debugfc $FUNCNAME "$@"
 	if [ $# -ne 1 ] ; then 
 		cat << __HELP__
@@ -277,6 +303,7 @@ where command is:
   run _autococo_file_ _file_ = execute the file in the emulator using autococo as configuration
   download [-f] _url_ = downloads URL and stores in the archive (-f forces the download if file already exist)
   prepare _autococo_file_ = prepares a directory with all files needed to run
+  execute package = runs the emulator for the specified package
 __HELP__
     exit -1
     ;;
