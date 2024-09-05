@@ -141,14 +141,14 @@ fi
 
 #XROAR_PARAMS+=(-machine-cart $XROAR_MACHINE_CART)
 
-#echo WORKDIR: $WORKDIR
-[[ ! -z "$WORKDIR" ]] && pushd "$WORKDIR" > /dev/null
+#echo WORK_DIR: $WORK_DIR
+[[ ! -z "$WORK_DIR" ]] && pushd "$WORK_DIR" > /dev/null
 
 echo $XROAR "${XROAR_PARAMS[@]}" "$@"
 
 "$XROAR" "${XROAR_PARAMS[@]}" -type "${coco_setup_command}" -type "\r\n" "$@"
 RES=$?
 
-[[ ! -z "$WORKDIR" ]] && popd > /dev/null
+[[ ! -z "$WORK_DIR" ]] && popd > /dev/null
 
 exit $?

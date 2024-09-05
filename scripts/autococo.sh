@@ -12,8 +12,8 @@ if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 if [ -f "$SCRIPTDIR/autococo.config" ] ; then source "$SCRIPTDIR/autococo.config" ; fi
 if [ -f ~/.autococo ] ; then source ~/.autococo ; fi
 
-if [ -d "$WORKDIR" ] ; then rm -rf "$WORKDIR" ; fi
-if [ ! -d "$WORKDIR" ] ; then mkdir -p "$WORKDIR" ; fi
+if [ -d "$WORK_DIR" ] ; then rm -rf "$WORK_DIR" ; fi
+if [ ! -d "$WORK_DIR" ] ; then mkdir -p "$WORK_DIR" ; fi
 
 function debugfc() {
 	local fn="$1"

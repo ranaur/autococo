@@ -275,10 +275,10 @@ function infer_guess_dsk_command() { # file.dsk
 
 function infer_zip() { # file.zip outfile.autococo
 #debugfc $FUNCNAME "$@"
-	WORKDIR="$WORKDIR/infer"
-	unzip_at "$1" "$WORKDIR"
+	WORK_DIR="$WORK_DIR/infer"
+	unzip_at "$1" "$WORK_DIR"
 
-	pushd "$WORKDIR" > /dev/null
+	pushd "$WORK_DIR" > /dev/null
 
 	shopt -s nocaseglob
 	shopt -s nullglob
@@ -340,7 +340,7 @@ function infer_zip() { # file.zip outfile.autococo
 
 	popd > /dev/null
 
-	#rm -rf "$WORKDIR"
+	#rm -rf "$WORK_DIR"
 	return 0
 }
 
