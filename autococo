@@ -274,22 +274,22 @@ case "$1" in
     cmd_run "$@"
     exit $?
     ;;
-  infer)
+  infe|infer)
     shift
     cmd_infer "$@"
     exit $?
     ;;
-  download)
+  down|download)
     shift
     cmd_download "$@"
     exit $?
     ;;
-  prepare)
+  prep|prepare)
     shift
     cmd_prepare "$@"
     echo $?
     ;;
-  execute)
+  exec|execute)
     shift
     cmd_execute "$@"
     echo $?
