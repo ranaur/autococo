@@ -12,7 +12,61 @@ function call_emulator() {
 		return 1
 	fi
 
-	echo . "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+	local err=0
+	debug Current dir: `pwd`
+	debug floppy0: $coco_setup_floppy0
+	if [ ! -z "$coco_setup_floppy0" ] && [ ! -f "$coco_setup_floppy0" ] ; then
+		error "File $coco_setup_floppy0 for Floppy 0 is missing"
+		err=1
+	fi
+	debug floppy1: $coco_setup_floppy1
+	if [ ! -z "$coco_setup_floppy1" ] && [ ! -f "$coco_setup_floppy1" ] ; then
+		error "File $coco_setup_floppy1 for Floppy 1 is missing"
+		err=1
+	fi
+	debug floppy2: $coco_setup_floppy2
+	if [ ! -z "$coco_setup_floppy2" ] && [ ! -f "$coco_setup_floppy2" ] ; then
+		error "File $coco_setup_floppy2 for Floppy 2 is missing"
+		err=1
+	fi
+	debug floppy3: $coco_setup_floppy3
+	if [ ! -z "$coco_setup_floppy3" ] && [ ! -f "$coco_setup_floppy3" ] ; then
+		error "File $coco_setup_floppy3 for Floppy 3 is missing"
+		err=1
+	fi
+	debug floppy3: $coco_setup_hd0
+	if [ ! -z "$coco_setup_floppy3" ] && [ ! -f "$coco_setup_floppy3" ] ; then
+		error "File $coco_setup_floppy3 for Floppy 3 is missing"
+		err=1
+	fi
+	debug hd0: $coco_setup_hd0
+	if [ ! -z "$coco_setup_hd0" ] && [ ! -f "$coco_setup_hd0" ] ; then
+		error "File $coco_setup_hd0 for Hard Disk 0 is missing"
+		err=1
+	fi
+	debug hd1: $coco_setup_hd1
+	if [ ! -z "$coco_setup_hd1" ] && [ ! -f "$coco_setup_hd1" ] ; then
+		error "File $coco_setup_hd1 for Hard Disk 1 is missing"
+		err=1
+	fi
+	debug cassete: $coco_setup_cassete
+	if [ ! -z "$coco_setup_cassete" ] && [ ! -f "$coco_setup_cassete" ] ; then
+		error "File $coco_setup_cassete for cassete is missing"
+		err=1
+	fi
+	debug rompack: $coco_setup_rompack
+	if [ ! -z "$coco_setup_rompack" ] && [ ! -f "$coco_setup_rompack" ] ; then
+		error "File $coco_setup_rompack for rompack is missing"
+		err=1
+	fi
+
+
+	if [ $err = 1 ] ; then
+		error Aborting.
+		return -1
+	fi
+	echo MOCK: "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+	return $?
 }
 
 function cmd_execute() {
@@ -33,12 +87,13 @@ __HELP__
 	local autococo="${PACKAGES_DIR}/${package}/${autococofile}"
 	if [[ ! -f "${autococo}" ]] ; then
 		error "Configuration $configuration not found in package directory. Aborting"
-		exit -1
+		return -1
 	fi
 
 	autococo_load "$autococo"
-
+	pushd "${PACKAGES_DIR}/${package}" >& /dev/null
 	call_emulator
+	popd >& /dev/null
 }
 
 function cmd_prepare() {
@@ -94,6 +149,7 @@ __HELP__
 		# looks for an autococo file and creates it if it is not found
 		local autococo="${file%.*}.autococo"
 		if [[ ! -f "$autococo" ]] ; then
+			echo "No autococo file found, infering from the data"
 			cmd_infer "$1" "$autococo"
 		fi
 
@@ -108,7 +164,7 @@ __HELP__
 		# XXX implement -f option to override
 		echo Package ${file%.*} already exist in packages directory.
 		echo Aborting.
-		exit -2
+		return -2
 	fi
 
 	mkdir -p "$packagedir"
@@ -157,7 +213,7 @@ function cmd_infer() { # dsk/zip/cas file
 	inferred_setup_=()
 	infer_archive_cocoarchive "$1"
 
-	echo "FILE: $1"
+	#echo "FILE: $1"
 	case ${ext,,} in
 	zip)
 		infer_zip "$1"
@@ -192,7 +248,7 @@ usage: $0 run file
 Runs file in the emulator configured. The behaviour depends on the filetype:
    .autococo => fetch the file in URL or source field, and execute
    .DSK, .CAS, .ZIP or .CCC => looks for an .autococo in the same directory
-	infer, if it doesn't exit
+	infer, if it doesn't exist
 
 __HELP__
 		return -1;
@@ -261,7 +317,7 @@ __HELP__
 	  ;;
 	*)
 	  echo NOT IMPLEMENTED
-	  exit -1
+	  return -1
 	  ;;
 	esac
 
@@ -287,12 +343,12 @@ case "$1" in
   prep|prepare)
     shift
     cmd_prepare "$@"
-    echo $?
+    exit $?
     ;;
   exec|execute)
     shift
     cmd_execute "$@"
-    echo $?
+    exit $?
     ;;
   *)
     cat << __HELP__

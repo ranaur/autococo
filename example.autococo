@@ -24,6 +24,8 @@ MISSING: SD and HD
   floppy1: mount a DSK file on floppy 1
   floppy2: mount a DSK file on floppy 2
   floppy3: mount a DSK file on floppy 3
+  hd0: Hard Disk 0 (SuperIDE Format)
+  hd1: Hard Disk 1 (SuperIDE Format)
   joystcks: [left, right, both, none]
   keyboard: [keys]
   command: commant to run> if it sarts wih an @ it is a file

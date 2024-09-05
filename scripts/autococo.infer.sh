@@ -248,7 +248,7 @@ function infer_guess_dsk_command() { # file.dsk
 				inferred_package_status="inferred"
 				local line=${dir[0]}
 				local file=$(echo "$line" | cut -d : -f 1)
-				echo "LOADM\"$file\":EXEC"
+				echo "LOADM\"$(trim "$file")\":EXEC"
 				;;
 			*)
 				local file=""
@@ -264,7 +264,7 @@ function infer_guess_dsk_command() { # file.dsk
 					inferred_package_status="inferred with doubts (more than one BIN file)"
 				else
 					inferred_package_status="inferred (guessed $file)"
-					echo "LOADM\"$file\":EXEC"
+					echo "LOADM\"$(trim "$file")\":EXEC"
 				fi
 				;;
 		esac
@@ -307,6 +307,7 @@ function infer_zip() { # file.zip outfile.autococo
 			;;
 		1)	# only one DSK file, infer it
 #debug FILE:"${files_dsk}"
+			inferred_package_status="inferred (one disk)"
 			infer_dsk "${files_dsk}"
 			;;
 		*)	# mode than one file
