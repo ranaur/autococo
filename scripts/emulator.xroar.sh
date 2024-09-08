@@ -41,7 +41,7 @@ case $coco_setup_architecture in
 		XROAR_RAM=${coco_setup_memory:-128}
 		;;
 	*)
-		echo "Unknown architecture $coco_architecture"
+		echo "Unknown architecture $coco_setup_architecture"
 		exit 2
 		;;
 esac

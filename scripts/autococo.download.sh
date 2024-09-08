@@ -35,7 +35,7 @@ function autococo_download() { # [-f] url => downloads URL to archive directory 
 #echo DOWNLOAD: Download ok >&2
 		return 0
 	else
-		rm "$destination.downloading"
+		rm -f "$destination.downloading"
 #echo DOWNLOAD: Download failed >&2
 		return -1
 	fi

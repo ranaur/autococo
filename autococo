@@ -34,7 +34,7 @@ function call_emulator() {
 		error "File $coco_setup_floppy3 for Floppy 3 is missing"
 		err=1
 	fi
-	debug floppy3: $coco_setup_hd0
+	debug floppy3: $coco_setup_floppy3
 	if [ ! -z "$coco_setup_floppy3" ] && [ ! -f "$coco_setup_floppy3" ] ; then
 		error "File $coco_setup_floppy3 for Floppy 3 is missing"
 		err=1
@@ -60,12 +60,16 @@ function call_emulator() {
 		err=1
 	fi
 
-
 	if [ $err = 1 ] ; then
 		error Aborting.
 		return -1
 	fi
-	echo MOCK: "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+
+	#set | grep ^coco
+	# Export autococo environment variables
+	export ${!coco_@}
+	echo "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+	"$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
 	return $?
 }
 
@@ -186,7 +190,8 @@ __HELP__
 
 function cmd_download() { # URL
 #debugfc $FUNCNAME "$@"
-	file=$(autococo_download "$@")
+	url=$(url_encode "$1")
+	file=$(autococo_download "$url")
 	if [[ $? == 0 ]] ; then
 		echo "Download ok. Local file at $file"
 		return 0
