@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 AUTOCOCODIR=$(realpath "$0")
 AUTOCOCODIR=$(dirname "$AUTOCOCODIR")
-SCRIPTDIR="$AUTOCOCODIR/scripts"
+SCRIPT_DIR="$AUTOCOCODIR/scripts"
 
-source "$SCRIPTDIR/autococo.sh"
+source "$SCRIPT_DIR/autococo.sh"
 
 function call_emulator() {
 #debugfc $FUNCNAME "$@"
-	if [ ! -x "$SCRIPTDIR/emulator.$EMULATOR.sh" ] ; then
+	if [ ! -x "$SCRIPT_DIR/emulator.$EMULATOR.sh" ] ; then
 		error emulator "$EMULATOR" does not exist!
 		return 1
 	fi
@@ -68,8 +68,8 @@ function call_emulator() {
 	#set | grep ^coco
 	# Export autococo environment variables
 	export ${!coco_@}
-	echo "$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
-	"$SCRIPTDIR/emulator.$EMULATOR.sh" "$@"
+	echo "$SCRIPT_DIR/emulator.$EMULATOR.sh" "$@"
+	"$SCRIPT_DIR/emulator.$EMULATOR.sh" "$@"
 	return $?
 }
 

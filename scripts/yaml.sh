@@ -19,7 +19,7 @@
 #   }'
 #}
 
-source $SCRIPTDIR/parse_yaml.sh
+source "$(dirname "$(realpath "$0")")/parse_yaml.sh"
 
 function get_yaml() {
 	# get_yaml FILE tag

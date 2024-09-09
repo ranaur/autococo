@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source "$SCRIPTDIR/download.sh"
+source "$SCRIPT_DIR/download.sh"
 
 function autococo_url_archive_dir() { # url => echoes the directory that holds the cache (archive) for the URL
 	if [[ $# -ne 1 ]] ; then return -1 ; fi

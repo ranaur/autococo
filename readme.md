@@ -55,7 +55,7 @@ scripts/autcoco.config
 
 ## Config variables
 AUTOCOCODIR=Directory where autococo script is located
-SCRIPTDIR=normaly $AUTOCOCODIR/scripts
+SCRIPT_DIR=normaly $AUTOCOCODIR/scripts
 DATABASEDIR=normaly $AUTOCOCODIR/database
 WORKDIR=directory to extract/work files
 

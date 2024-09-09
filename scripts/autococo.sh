@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Load config
-if [[ -z "$SCRIPTDIR" ]] ; then
-	SCRIPTDIR=`realpath .`/scripts
+if [[ -z "$SCRIPT_DIR" ]] ; then
+	SCRIPT_DIR=`realpath .`/scripts
 fi
 
 #set -o errexit # exit on any error
@@ -9,7 +9,7 @@ fi
 set -o pipefail # if some program in a pipa fails, aborts
 if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-if [ -f "$SCRIPTDIR/autococo.config" ] ; then source "$SCRIPTDIR/autococo.config" ; fi
+if [ -f "$SCRIPT_DIR/autococo.config" ] ; then source "$SCRIPT_DIR/autococo.config" ; fi
 if [ -f ~/.autococo ] ; then source ~/.autococo ; fi
 
 if [ -d "$WORK_DIR" ] ; then rm -rf "$WORK_DIR" ; fi
@@ -29,13 +29,13 @@ function error() {
 	echo ERROR: "$@" >&2
 }
 
-source "$SCRIPTDIR/yaml.sh"
-source "$SCRIPTDIR/database.sh"
-source "$SCRIPTDIR/util.sh"
-source "$SCRIPTDIR/zip.sh"
-source "$SCRIPTDIR/dsk.sh"
-source "$SCRIPTDIR/autococo.infer.sh"
-source "$SCRIPTDIR/autococo.download.sh"
+source "$SCRIPT_DIR/yaml.sh"
+source "$SCRIPT_DIR/database.sh"
+source "$SCRIPT_DIR/util.sh"
+source "$SCRIPT_DIR/zip.sh"
+source "$SCRIPT_DIR/dsk.sh"
+source "$SCRIPT_DIR/autococo.infer.sh"
+source "$SCRIPT_DIR/autococo.download.sh"
 
 function autococo_load() { # loads the autococo file in environment
        source <(parse_yaml "$1" coco_)
