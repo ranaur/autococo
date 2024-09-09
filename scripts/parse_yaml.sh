@@ -3,6 +3,8 @@
 # source: https://github.com/mrbaseman/parse_yaml.git
 
 function parse_yaml {
+   [ ! -f "$1" ] && echo parse_yaml: file "$1" not found. 1>&2 && exit -1
+   
    local prefix="$2"
    local separator=${3:-_}
 
