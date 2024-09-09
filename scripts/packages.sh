@@ -18,23 +18,87 @@ source "$(dirname "$(realpath "$0")")/yaml.sh"
 #echo PACKAGES_DIR=$PACKAGES_DIR
 #echo PACKAGES_CONF=$PACKAGES_CONF
 
+function _packages_findFile() {
+	# _packages_findFile file
+	# return file number fo the given file name
+	# the package description must be loaded under prefix data_
+	local filename="$1"
+	local number=0
+	
+	for var in ${!data_files_*} ; do
+		if [[ $var =~ ${prefix}_files_.*_name$ ]] ; then
+			number="${var#data_files_}"
+			number="${number%_name}"
+			if [ ${!var} == "${filename}" ] ; then
+				
+				echo $number
+				return 0
+			fi
+		fi
+	done
+	
+	echo -1
+	return 0
+}
+
 function packages_describeFile() {
 #echo DEBUG: function call: $FUNCNAME\(#$#\) "$@"
 	[ $# -lt 2 ] && return -1
 
 	local package="$1"
 	local file="$2"
-
-	source <(parse_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}" "data_")
 	
+	[ -f "${file}" ] && echo "file not found" && return -2
 
-	set | grep ^data_
-	#save_yaml "data_" "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}"
+	shift 2
+	source <(load_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}")
+
+	local var="data_${file}_"
+	local var_escaped="i${var//./_}"
+	
+	filenumber=$(_packages_findFile "$file")
+	if [ $filenumber -eq -1 ] ; then # file does not exist in description yet
+		source <(add_yaml files)
+		filenumber=$LAST_ELEM
+	fi
+
+	local varprefix="files.$filenumber"
+
+	source <(set_yaml "$varprefix.name" "$file")
+
+	local hash="md5:$(md5sum "${PACKAGES_DIR}/${package}/${file}" | cut -d\  -f1)"
+	source <(set_yaml "$varprefix.hash" "$hash")
+
+	local creation="$(date --reference="${PACKAGES_DIR}/${package}/${file}" '+%Y-%m-%d %H:%M:%S')"
+	source <(set_yaml "$varprefix.creation" "$creation")
+
+	local size="$(wc -c <"${PACKAGES_DIR}/${package}/${file}")"
+	source <(set_yaml "$varprefix.size" "$size")
+
+	local settedDescription=0
+	while [ ! -z "$1" ] ; do
+		local var
+		local val
+		if [[ $1 =~ (.*):(.*) ]] ; then
+			var="${BASH_REMATCH[1]}"
+			value="${BASH_REMATCH[2]}"
+		else
+			[[ settedDescription -ne 0 ]] && echo "Double description. Did you quote the parameter description?" && exit -1
+			settedDescription=1
+			var="${hashvarname}description"
+			value="$1"
+		fi
+
+		source <(set_yaml "$varprefix.$var" "$value")
+		
+		shift
+	done
+
+	#list_yaml
+	save_yaml "data" "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}"
 	
 	return 0
 }
-
-
 
 function packages_setMetadata() {
 #echo DEBUG: function call: $FUNCNAME\(#$#\) "$@"
@@ -189,7 +253,7 @@ if there is a description, adds as well. If the description is in the form "tag:
 
 example:
 
-$(basename "$0") package todo.txt "Todo list" format:text origin:local
+$(basename "$0") $1 package todo.txt "Todo list" format:text origin:local
 __
 	;;
 	*)
