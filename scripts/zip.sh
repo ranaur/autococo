@@ -45,23 +45,3 @@ unzipStrip() {
     rm -rf -- "$tmpdir"
 }
 
-function expandZip() {
-	# expandZip zipfile directory
-	# expands the zipfile in the directory striping the first directory
-
-	rm -Rf $TEMP_DIR
-	mkdir -p $TEMP_DIR
-	pushd $TEMP_DIR > /dev/null
-	extractZip "$1"
-	popd > /dev/null
-
-
-	rest_cmd=$(shopt -p dotglob)  # Get restoration command
-	shopt -s dotglob              # Set option
-	mv "$TEMP_DIR"/*/* "$2" &> /dev/null
-	rmdir "$TEMP_DIR"/* &> /dev/null
-	mv "$TEMP_DIR"/* "$2" &> /dev/null
-	rmdir "$TEMP_DIR" &> /dev/null
-	${rest_cmd}
-}
-
