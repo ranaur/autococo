@@ -41,6 +41,13 @@ function _packages_findFile() {
 	return 0
 }
 
+function packages_updateFile() {
+	packages_setFileMetadata "$1" "$2" name
+	packages_setFileMetadata "$1" "$2" creation
+	packages_setFileMetadata "$1" "$2" size
+	packages_setFileMetadata "$1" "$2" hash
+}
+
 function packages_getFileMetadata() {
 #echo DEBUG: function call: $FUNCNAME\(#$#\) "$@"
 	[ $# -ne 3 ] && return -1
@@ -277,6 +284,12 @@ usage: $(basename "$0") $1 pacakge file metadata
 Prints a metadata associated for the file.
 __
 	;;
+	updateFile)
+		cat << __
+usage: $(basename "$0") $1 pacakge file
+Sets name, size, hash and creation for file.
+__
+	;;
 	*)
 		cat << __HELP__
 usage: $(basename "$0") command [parameters]
@@ -289,6 +302,7 @@ where command is:
   renamePackage - renames a package
   setFileMetadata - sets a metadata for a file
   getFileMetadata - prints a metadata from a file
+  updateFile - updats basic file info
   help - this message
 __HELP__
 	esac
@@ -302,7 +316,7 @@ if [ "$0" != "[${BASH_SOURCE[0]}]" ] ; then
 	[ -z "$COMMAND" ] && packages_help
 	shift
 	case "$COMMAND" in
-		setup|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
+		setup|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
 			"packages_$COMMAND" "$@"
 			res=$?
 			if [ $res -eq 255 ] ; then
