@@ -41,11 +41,41 @@ function _packages_findFile() {
 	return 0
 }
 
+function packages_addFile() {
+	local force=false
+	if [ "$1" = "-f" ] ; then
+		shift
+		force=true
+	fi
+
+	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
+	local filename="$2"
+	local file="$3"
+
+	[ -z "$file" ] && file="$(basename "$filename")"
+
+	[ $# -lt 2 ] || [ $# -gt 3 ] && return -1
+
+	[ ! -f "${filename}" ] && echo "file not foud" && return 5
+	if [ -f "${PACKAGES_DIR}/${package}/$file" ] && [ $force = "false" ] ; then
+		echo "destination file already exist"
+		return 6
+	fi
+	cp "$filename" "${PACKAGES_DIR}/${package}/$file"
+
+	packages_updateFile "$package" "$file"
+	return $?
+}
+
 function packages_updateFile() {
 	packages_setFileMetadata "$1" "$2" name
 	packages_setFileMetadata "$1" "$2" creation
 	packages_setFileMetadata "$1" "$2" size
 	packages_setFileMetadata "$1" "$2" hash
+
+	return $?
 }
 
 function packages_getFileMetadata() {
@@ -53,10 +83,12 @@ function packages_getFileMetadata() {
 	[ $# -ne 3 ] && return -1
 
 	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
 	local file="$2"
 	local metadata="$3"
 	
-	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return -2
+	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return 4
 
 	source <(load_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}")
 
@@ -79,11 +111,13 @@ function packages_setFileMetadata() {
 	[ $# -lt 3 ] && return -1
 
 	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
 	local file="$2"
 	local metadata="$3"
 	local value="$4"
 	
-	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return -2
+	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return 4
 
 	source <(load_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}")
 
@@ -131,6 +165,8 @@ function packages_setMetadata() {
 	[ $# -lt 3 ] || [ $# -gt 4 ] && return -1
 
 	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
 	local prefix=${4:-yaml}
 	local tag="${prefix}_${2//\./_}"
 	local value="${3}"
@@ -149,6 +185,8 @@ function packages_getMetadata() {
 	[ $# -lt 2 ] || [ $# -gt 3 ] && return -1
 
 	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
 	local prefix=${3:-yaml}
 	local tag="${prefix}_${2//\./_}"
 
@@ -176,52 +214,47 @@ __DEFAULT_CONF__
 }
 
 function packages_removePackage() {
-	local PACKAGE_NAME="$1"
+	local package="$1"
 
 	[ $# -ne 1 ] && return -1
 
-	if [ ! -d "${PACKAGES_DIR}/${PACKAGE_NAME}" ] ; then
-		echo Package does not exists
-		return 1
-	fi
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
 
-	rm -rf "${PACKAGES_DIR}/${PACKAGE_NAME}"
+	rm -rf "${PACKAGES_DIR}/${package}"
 
 	return $?
 }
 
 function packages_renamePackage() {
-	local PACKAGE_NAME="$1"
-	local NEW_PACKAGE_NAME="$2"
+	local package="$1"
+	local new_package="$2"
 
 	[ $# -ne 2 ] && return -1
 
-	if [ ! -d "${PACKAGES_DIR}/${PACKAGE_NAME}" ] ; then
-		echo Package does not exists
-		return 1
-	fi
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+	[ -d "${PACKAGES_DIR}/${new_package}" ] && echo "destination package already exist" && return 3
 
-	mv "${PACKAGES_DIR}/${PACKAGE_NAME}" "${PACKAGES_DIR}/${NEW_PACKAGE_NAME}"
+	mv "${PACKAGES_DIR}/${package}" "${PACKAGES_DIR}/${new_package}"
 
-	packages_setMetadata "${NEW_PACKAGE_NAME}" package.name "${NEW_PACKAGE_NAME}"
+	packages_setMetadata "${new_package}" package.name "${new_package}"
 
 	return $?
 }
 
 function packages_createPackage() {
-	local PACKAGE_NAME="$1"
+	local package="$1"
 
 	[ $# -ne 1 ] && return -1
 
-	if [ -d "${PACKAGES_DIR}/${PACKAGE_NAME}" ] ; then
-		echo Package already exists
-		return 1
+	if [ -d "${PACKAGES_DIR}/${package}" ] ; then
+		echo package already exists
+		return 3
 	fi
 
-	mkdir -p "${PACKAGES_DIR}/${PACKAGE_NAME}"
-	cat > "${PACKAGES_DIR}/${PACKAGE_NAME}/${PACKAGES_FILE}" << __DEFAULT_PACKAGE__
+	mkdir -p "${PACKAGES_DIR}/${package}"
+	cat > "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}" << __DEFAULT_PACKAGE__
 package:
-  name: ${PACKAGE_NAME}
+  name: ${package}
   creation: $(date '+%Y-%m-%d %H:%M:%S')
 __DEFAULT_PACKAGE__
 	
@@ -265,7 +298,7 @@ __
 	;;
 	renamePackage)
 		cat << __
-usage: $(basename "$0") $1 pacakge new_name
+usage: $(basename "$0") $1 package new_name
 renames a package
   package - old name of the package
   new_name - new name of the package
@@ -273,21 +306,30 @@ __
 	;;
 	setFileMetadata)
 		cat << __
-usage: $(basename "$0") $1 pacakge file metadata [value]
+usage: $(basename "$0") $1 package filename metadata [value]
 Sets a metadata associated for the file. If the metadata is name, size, hash or creation, gets the value from the file.
 Otherwise the fourth parameter is mandatory.
 __
 	;;
 	getFileMetadata)
 		cat << __
-usage: $(basename "$0") $1 pacakge file metadata
+usage: $(basename "$0") $1 package filename metadata
 Prints a metadata associated for the file.
 __
 	;;
 	updateFile)
 		cat << __
-usage: $(basename "$0") $1 pacakge file
+usage: $(basename "$0") $1 package filename
 Sets name, size, hash and creation for file.
+__
+	;;
+	addFile)
+		cat << __
+usage: $(basename "$0") $1 [-f] package file [filename]
+Copies the file (in the filesystem) to the package
+parameters:
+  -f => force copy even if the file exist in package
+  [filename] => renames the file
 __
 	;;
 	*)
@@ -302,7 +344,8 @@ where command is:
   renamePackage - renames a package
   setFileMetadata - sets a metadata for a file
   getFileMetadata - prints a metadata from a file
-  updateFile - updats basic file info
+  updateFile - updates basic file info
+  addFile - copies a file into the package
   help - this message
 __HELP__
 	esac
@@ -316,7 +359,7 @@ if [ "$0" != "[${BASH_SOURCE[0]}]" ] ; then
 	[ -z "$COMMAND" ] && packages_help
 	shift
 	case "$COMMAND" in
-		setup|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
+		setup|addFile|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
 			"packages_$COMMAND" "$@"
 			res=$?
 			if [ $res -eq 255 ] ; then
