@@ -21,13 +21,13 @@ source "$(dirname "$(realpath "$0")")/yaml.sh"
 function _packages_findFile() {
 	# _packages_findFile file
 	# return file number fo the given file name
-	# the package description must be loaded under prefix data_
+	# the package description must be loaded under prefix yaml_
 	local filename="$1"
 	local number=0
 	
-	for var in ${!data_files_*} ; do
+	for var in ${!yaml_files_*} ; do
 		if [[ $var =~ ${prefix}_files_.*_name$ ]] ; then
-			number="${var#data_files_}"
+			number="${var#yaml_files_}"
 			number="${number%_name}"
 			if [ ${!var} == "${filename}" ] ; then
 				
@@ -41,20 +41,47 @@ function _packages_findFile() {
 	return 0
 }
 
-function packages_describeFile() {
+function packages_getFileMetadata() {
 #echo DEBUG: function call: $FUNCNAME\(#$#\) "$@"
-	[ $# -lt 2 ] && return -1
+	[ $# -ne 3 ] && return -1
 
 	local package="$1"
 	local file="$2"
+	local metadata="$3"
 	
-	[ -f "${file}" ] && echo "file not found" && return -2
+	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return -2
 
-	shift 2
 	source <(load_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}")
 
-	local var="data_${file}_"
-	local var_escaped="i${var//./_}"
+	local var="yaml_${file}_"
+	local var_escaped="${var//./_}"
+	
+	filenumber=$(_packages_findFile "$file")
+	if [ $filenumber -eq -1 ] ; then
+		return 0
+	fi
+
+	local varprefix="files.$filenumber"
+	get_yaml "$varprefix.$metadata"
+
+	return 0
+}
+
+function packages_setFileMetadata() {
+#echo DEBUG: function call: $FUNCNAME\(#$#\) "$@"
+	[ $# -lt 3 ] && return -1
+
+	local package="$1"
+	local file="$2"
+	local metadata="$3"
+	local value="$4"
+	
+	[ ! -f "${PACKAGES_DIR}/${package}/${file}" ] && echo "file not found" && return -2
+
+	source <(load_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}")
+
+	local var="yaml_${file}_"
+	local var_escaped="${var//./_}"
 	
 	filenumber=$(_packages_findFile "$file")
 	if [ $filenumber -eq -1 ] ; then # file does not exist in description yet
@@ -64,38 +91,30 @@ function packages_describeFile() {
 
 	local varprefix="files.$filenumber"
 
-	source <(set_yaml "$varprefix.name" "$file")
+	if [ -z "$value" ] ; then
+		case "$metadata" in
+		name)
+			value="$file"
+			;;
+		hash)
+			value="md5:$(md5sum "${PACKAGES_DIR}/${package}/${file}" | cut -d\  -f1)"
+			;;
+		creation)
+			value="$(date --reference="${PACKAGES_DIR}/${package}/${file}" '+%Y-%m-%d %H:%M:%S')"
+			;;
+		size)
+			value="$(wc -c <"${PACKAGES_DIR}/${package}/${file}")"
+			;;
+		*)
+			return -1 # value parameter is mandatory
+			;;
+		esac
+	fi
 
-	local hash="md5:$(md5sum "${PACKAGES_DIR}/${package}/${file}" | cut -d\  -f1)"
-	source <(set_yaml "$varprefix.hash" "$hash")
-
-	local creation="$(date --reference="${PACKAGES_DIR}/${package}/${file}" '+%Y-%m-%d %H:%M:%S')"
-	source <(set_yaml "$varprefix.creation" "$creation")
-
-	local size="$(wc -c <"${PACKAGES_DIR}/${package}/${file}")"
-	source <(set_yaml "$varprefix.size" "$size")
-
-	local settedDescription=0
-	while [ ! -z "$1" ] ; do
-		local var
-		local val
-		if [[ $1 =~ (.*):(.*) ]] ; then
-			var="${BASH_REMATCH[1]}"
-			value="${BASH_REMATCH[2]}"
-		else
-			[[ settedDescription -ne 0 ]] && echo "Double description. Did you quote the parameter description?" && exit -1
-			settedDescription=1
-			var="${hashvarname}description"
-			value="$1"
-		fi
-
-		source <(set_yaml "$varprefix.$var" "$value")
-		
-		shift
-	done
+	source <(set_yaml "$varprefix.$metadata" "$value")
 
 	#list_yaml
-	save_yaml "data" "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}"
+	save_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}"
 	
 	return 0
 }
@@ -105,7 +124,7 @@ function packages_setMetadata() {
 	[ $# -lt 3 ] || [ $# -gt 4 ] && return -1
 
 	local package="$1"
-	local prefix=${4:-data}
+	local prefix=${4:-yaml}
 	local tag="${prefix}_${2//\./_}"
 	local value="${3}"
 
@@ -113,7 +132,7 @@ function packages_setMetadata() {
 	source <(echo $tag=\"$value\")
 
 	#set | grep ^${prefix}
-	save_yaml "${prefix}" "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}"
+	save_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}" "${prefix}"
 	
 	return 0
 }
@@ -123,7 +142,7 @@ function packages_getMetadata() {
 	[ $# -lt 2 ] || [ $# -gt 3 ] && return -1
 
 	local package="$1"
-	local prefix=${3:-data}
+	local prefix=${3:-yaml}
 	local tag="${prefix}_${2//\./_}"
 
 	source <(parse_yaml "${PACKAGES_DIR}/${package}/${PACKAGES_FILE}" "${prefix}_")
@@ -245,15 +264,17 @@ renames a package
   new_name - new name of the package
 __
 	;;
-	describeFile)
+	setFileMetadata)
 		cat << __
-usage: $(basename "$0") $1 pacakge file [descriptions ...]
-describes a file. Adds name, timestamp and hash parameters to the package contents.
-if there is a description, adds as well. If the description is in the form "tag:text" adds other tags.
-
-example:
-
-$(basename "$0") $1 package todo.txt "Todo list" format:text origin:local
+usage: $(basename "$0") $1 pacakge file metadata [value]
+Sets a metadata associated for the file. If the metadata is name, size, hash or creation, gets the value from the file.
+Otherwise the fourth parameter is mandatory.
+__
+	;;
+	getFileMetadata)
+		cat << __
+usage: $(basename "$0") $1 pacakge file metadata
+Prints a metadata associated for the file.
 __
 	;;
 	*)
@@ -266,7 +287,8 @@ where command is:
   createPackage - create new package
   removePackage - removes (deletes) a package
   renamePackage - renames a package
-  describeFile - describes a file in the package metadata
+  setFileMetadata - sets a metadata for a file
+  getFileMetadata - prints a metadata from a file
   help - this message
 __HELP__
 	esac
@@ -280,7 +302,7 @@ if [ "$0" != "[${BASH_SOURCE[0]}]" ] ; then
 	[ -z "$COMMAND" ] && packages_help
 	shift
 	case "$COMMAND" in
-		setup|describeFile|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
+		setup|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
 			"packages_$COMMAND" "$@"
 			res=$?
 			if [ $res -eq 255 ] ; then
