@@ -74,6 +74,34 @@ function packages_extractFile() {
 	return $?
 }
 
+function packages_downloadFile() {
+	local force=false
+	if [ "$1" = "-f" ] ; then
+		shift
+		force=true
+	fi
+
+	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
+	local filename="$2"
+	local file="$3"
+
+	[ -z "$file" ] && file="$(basename "$filename")"
+
+	[ $# -lt 2 ] || [ $# -gt 3 ] && return -1
+
+	[ ! -f "${filename}" ] && echo "file not foud" && return 5
+	if [ -f "${PACKAGES_DIR}/${package}/$file" ] && [ $force = "false" ] ; then
+		echo "destination file already exist"
+		return 6
+	fi
+	cp "$filename" "${PACKAGES_DIR}/${package}/$file"
+
+	packages_updateFile "$package" "$file"
+	return $?
+}
+
 function packages_addFile() {
 	local force=false
 	if [ "$1" = "-f" ] ; then
@@ -379,6 +407,14 @@ usage: $(basename "$0") $1 package
 Updates all files in the package
 __
 	;;
+	downloadFile)
+		cat << __
+usage: $(basename "$0") $1 [-f] package url [file]
+Downloads the URL into the package (uses the parameter file, if passed)
+Parameters:
+  -f => forces even if file exist
+__
+	;;
 	*)
 		cat << __HELP__
 usage: $(basename "$0") command [parameters]
@@ -395,6 +431,7 @@ where command is:
   updatePackage - updates all files in the package
   addFile - copies a file into the package
   extractFile - extract a zipfile into the package
+  downloadFile - downloads a file(url) into the package
   help - this message
 __HELP__
 	esac
@@ -408,7 +445,7 @@ if [ "$0" != "[${BASH_SOURCE[0]}]" ] ; then
 	[ -z "$COMMAND" ] && packages_help
 	shift
 	case "$COMMAND" in
-		setup|extractFile|addFile|updatePackage|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
+		setup|downloadFile|extractFile|addFile|updatePackage|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
 			"packages_$COMMAND" "$@"
 			res=$?
 			if [ $res -eq 255 ] ; then
