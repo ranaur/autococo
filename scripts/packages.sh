@@ -1,4 +1,5 @@
 #!/bin/bash
+CMD_FIND=/usr/bin/find
 
 _DIR="$(pwd)"
 while [  "${_DIR}" = "/" ] ; 
@@ -15,6 +16,7 @@ PACKAGES_CONF="${PACKAGES_DIR}/.packages.config"
 PACKAGES_FILE="description.yaml"
 
 source "$(dirname "$(realpath "$0")")/yaml.sh"
+source "$(dirname "$(realpath "$0")")/zip.sh"
 #echo PACKAGES_DIR=$PACKAGES_DIR
 #echo PACKAGES_CONF=$PACKAGES_CONF
 
@@ -39,6 +41,37 @@ function _packages_findFile() {
 	
 	echo -1
 	return 0
+}
+
+function packages_updatePackage() {
+	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+	[ $# -ne 1 ] && return -1
+
+	while IFS=\n read -r file; do
+		if [ "$file" != "${PACKAGES_FILE}" ] ; then
+			echo Updating "$file"
+			packages_updateFile "$package" "$file"
+		fi
+	done < <(${CMD_FIND} "${PACKAGES_DIR}/${package}" -type f -printf "%P\n")
+
+	return 0
+}
+
+function packages_extractFile() {
+	local package="$1"
+	[ ! -d "${PACKAGES_DIR}/${package}" ] && echo "package not foud" && return 2
+
+	local filename="$2"
+
+	[ $# -ne 2 ] && return -1
+	[ ! -f "${filename}" ] && echo "zipfile not foud" && return 5
+
+	unzip_at "$2" "${PACKAGES_DIR}/${package}"
+
+	packages_updatePackage "$package"
+
+	return $?
 }
 
 function packages_addFile() {
@@ -332,6 +365,20 @@ parameters:
   [filename] => renames the file
 __
 	;;
+	extractFile)
+		cat << __
+usage: $(basename "$0") $1 [-f] package zipfile
+Extracts the file into the package
+parameters:
+  -f => force copy even if the file exist in package
+__
+	;;
+	updatePackage)
+		cat << __
+usage: $(basename "$0") $1 package
+Updates all files in the package
+__
+	;;
 	*)
 		cat << __HELP__
 usage: $(basename "$0") command [parameters]
@@ -345,7 +392,9 @@ where command is:
   setFileMetadata - sets a metadata for a file
   getFileMetadata - prints a metadata from a file
   updateFile - updates basic file info
+  updatePackage - updates all files in the package
   addFile - copies a file into the package
+  extractFile - extract a zipfile into the package
   help - this message
 __HELP__
 	esac
@@ -359,7 +408,7 @@ if [ "$0" != "[${BASH_SOURCE[0]}]" ] ; then
 	[ -z "$COMMAND" ] && packages_help
 	shift
 	case "$COMMAND" in
-		setup|addFile|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
+		setup|extractFile|addFile|updatePackage|updateFile|getFileMetadata|setFileMetadata|renamePackage|removePackage|createPackage|getMetadata|setMetadata)
 			"packages_$COMMAND" "$@"
 			res=$?
 			if [ $res -eq 255 ] ; then
