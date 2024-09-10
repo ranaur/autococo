@@ -21,20 +21,30 @@
 
 source "$(dirname "$(realpath "$0")")/parse_yaml.sh"
 function list_yaml() {
-	set | grep ^${1:-data}_
+	set | grep ^${1:-yaml}_
 }
 
 function load_yaml() {
-	parse_yaml "$1" "${2:-data}_"
+	parse_yaml "$1" "${2:-yaml}_"
 }
 
 function get_yaml() {
-	# get_yaml FILE tag
-	grep "^[\s]*$2:" "$1" | sed -e "s/^$2:[[:blank:]]*\(.*\)$/\1/"
+#>&2 echo debug: $FUNCNAME "$@"
+	# yaml must be loaded
+	local var="$1"
+	local prefix="${2:-yaml}"
+
+	[ $? -ge 2 ] && return -1
+
+	local envvar="${prefix}_${var//./_}"
+
+	echo ${!envvar}
+
+	return 0
 }
 
 function substitute_yaml() {
->&2 echo substitute_yaml "$@"
+#>&2 echo substitute_yaml "$@"
 	# substitute_yaml FILE tag value
 	if grep -q "$2" "$1" ; then
 #>&2 echo FOUND
@@ -83,13 +93,13 @@ function save_yaml_() {
 # save_yaml => prefix file +> save all variables from YAML file to a YAML file. Opposite from parse_yaml
 function save_yaml() {
 #echo save_yaml "$@"
-	PREFIX="$1"
-	FILE="$2"
+	local file="$1"
+	local prefix="${2:-yaml}"
 
-	cat < /dev/null > "$FILE"
+	cat < /dev/null > "$file"
 
-	#export ${!$PREFIX_@}
-	save_yaml_ "$PREFIX" "$FILE" "${PREFIX}__" 0
+	#export ${!$prefix_@}
+	save_yaml_ "$prefix" "$file" "${prefix}__" 0
 }
 
 export -f save_yaml_
@@ -99,7 +109,7 @@ function set_yaml() {
 	# set_yaml var value [prefix]
 	local var="${1}"
 	local value="${2}"
-	local prefix="${3:-data}"
+	local prefix="${3:-yaml}"
 	local lastvar="${var##*.}"
 
 	#echo var=$var prefix=$prefix lastvar=$lastvar
@@ -119,7 +129,7 @@ function del_yaml() {
 	# usage: source <(del_yaml variable.var [prefix])
 	# del_yaml var value [prefix]
 	local var="${1}"
-	local prefix="${2:-data}"
+	local prefix="${2:-yaml}"
 	local lastvar="${var##*.}"
 
 	local varname="${prefix}_${var//./_}"
@@ -137,7 +147,7 @@ function add_yaml() {
 	# usage: source <(add_yaml variable.var [prefix])
 	# add_yaml var.array [prefix]
 	local var="${1}"
-	local prefix="${2:-data}"
+	local prefix="${2:-yaml}"
 	local lastvar="${var##*.}"
 	local varname="${prefix}_${var}_"
 	local varholder="${varname%%$lastvar}"
