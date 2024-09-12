@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+DOWNLOAD_CACHE="${DOWNLOAD_CACHE:-$HOME/cache}"
 if [[ -z "$CMD_CURL" ]] ; then CMD_CURL=`which curl` ; fi
 
 function download() { # url file => download URL to file
