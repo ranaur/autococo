@@ -1,0 +1,13 @@
+package:
+ status: inferred (one disk)
+ program: Temple of ROM
+ author: Tandy
+ genre: Games
+ file: Temple of ROM (Tandy).zip
+ md5: 585df0e948645afbaac83d753e0b0ce9
+ url: https://colorcomputerarchive.com/repo/Disks/Games/Temple of ROM (Tandy).zip
+setup:
+ architecture: coco2
+ artifact: no
+ floppy0: "TEMPLE.DSK"
+ command: LOADM"TEMPLE":EXEC

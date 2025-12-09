@@ -1,0 +1,13 @@
+package:
+ status: inferred with doubts (no file found)
+ program: King, The
+ author: Tom Mix Software
+ genre: Games
+ file: King, The (Tom Mix Software).zip
+ md5: 20b0430f0dc0ca607d8f972187967898
+ url: https://colorcomputerarchive.com/repo/Disks/Games/King, The (Tom Mix Software).zip
+setup:
+ architecture: coco2
+ artifact: no
+ floppy0: "theking.dsk"
+ command: LOADM"THEKING ":EXEC

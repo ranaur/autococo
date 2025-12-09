@@ -1,0 +1,13 @@
+package:
+ status: inferred with doubts (no file found)
+ program: Cashman
+ author: Computer Shack
+ genre: Games
+ file: Cashman (Computer Shack).zip
+ md5: dba1eccaf9d7d0272f54c4e5aad79bcc
+ url: https://colorcomputerarchive.com/repo/Disks/Games/Cashman (Computer Shack).zip
+setup:
+ architecture: coco2
+ artifact: no
+ floppy0: "CASHMAN.DSK"
+ command: LOADM"CASHMAN ":EXEC
